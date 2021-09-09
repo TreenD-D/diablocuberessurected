@@ -20,11 +20,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //todo
+
         if (sharedPreferences.getBoolean(KEY_SHOW_WELCOME, true)) {
             startActivity(Intent(this, OnboardingActivity::class.java))
         }
-//temp
-        startActivity(Intent(this, OnboardingActivity::class.java))
+
+//        startActivity(Intent(this, OnboardingActivity::class.java))
     }
 }

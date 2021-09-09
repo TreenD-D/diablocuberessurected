@@ -1,16 +1,21 @@
 package com.achulkov.diablocuberessurected.ui.onboarding
 
+import android.content.Intent
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentActivity
+import androidx.preference.PreferenceManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.achulkov.diablocuberessurected.databinding.ActivityOnboardingBinding
+import com.achulkov.diablocuberessurected.ui.MainActivity
 import com.achulkov.diablocuberessurected.ui.onboarding.page_fragments.PageFragment
 
 private const val NUM_PAGES = 3
 
-class OnboardingActivity : FragmentActivity(){
+class OnboardingActivity : AppCompatActivity(){
     companion object{
         val KEY_SHOW_WELCOME = "show_welcome"
     }
@@ -38,6 +43,14 @@ class OnboardingActivity : FragmentActivity(){
         viewPager.adapter = pagerAdapter
 
         binding.wormDotsIndicator.setViewPager2(viewPager)
+
+        binding.welcomeProceedButton.setOnClickListener {
+            PreferenceManager.getDefaultSharedPreferences(baseContext).edit()
+                .putBoolean(KEY_SHOW_WELCOME, false)
+                .apply()
+            startActivity(Intent(this, MainActivity::class.java))
+            finish()
+        }
     }
 
     override fun onBackPressed() {
@@ -51,14 +64,26 @@ class OnboardingActivity : FragmentActivity(){
         }
     }
 
-    /**
-     * A simple pager adapter that represents 5 ScreenSlidePageFragment objects, in
-     * sequence.
-     */
     private inner class ScreenSlidePagerAdapter(fa: FragmentActivity) : FragmentStateAdapter(fa) {
         override fun getItemCount(): Int = NUM_PAGES
 
-        override fun createFragment(position: Int): Fragment = PageFragment()
+        override fun createFragment(position: Int): Fragment {
+            return when(position){
+                0 -> { val fragment = PageFragment()
+                    fragment.arguments = bundleOf("index" to 0)
+                    fragment
+                }
+                1 -> { val fragment = PageFragment()
+                    fragment.arguments = bundleOf("index" to 1)
+                    fragment
+                }
+                2 -> { val fragment = PageFragment()
+                    fragment.arguments = bundleOf("index" to 2)
+                    fragment
+                }
+                else -> PageFragment()
+            }
+        }
     }
 
 

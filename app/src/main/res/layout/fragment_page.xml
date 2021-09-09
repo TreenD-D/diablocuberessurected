@@ -8,12 +8,7 @@
     tools:context=".ui.onboarding.page_fragments.PageFragment"
     android:background="@drawable/onboarding_background_1">
 
-    <androidx.constraintlayout.widget.Guideline
-        android:id="@+id/guideline_top"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        app:layout_constraintGuide_percent="0.15"
-        android:orientation="horizontal" />
+
 
     <ImageView
         android:id="@+id/main_page_image"
@@ -26,7 +21,35 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/guideline_top"
-        app:srcCompat="@drawable/background_top_fire" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/onborading_image_1" />
+
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="-65dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_horizontal|top"
+        android:textAppearance="@style/WelcomeTitleStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_page_image"
+        tools:text="@string/welcome_page_1_title" />
+
+    <TextView
+        android:id="@+id/subtitle"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="33dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="33dp"
+        android:gravity="center_horizontal|top"
+        android:textAppearance="@style/WelcomeSubTitleStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/title"
+        tools:text="@string/welcome_page_1_subtitle" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -3,4 +3,11 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="background_fire_image_desc">Background fire image</string>
+    <string name="welcome_button_start">I am ready!</string>
+    <string name="welcome_page_1_title">Welcome  traveller!</string>
+    <string name="welcome_page_1_subtitle">You are now arrived to an app representing horadric cube recipes</string>
+    <string name="welcome_page_2_title">Features</string>
+    <string name="welcome_page_2_subtitle">Here you can easily check all cube recipes and also have a chat with other fellow travellers</string>
+    <string name="welcome_page_3_title">Have a nice time</string>
+    <string name="welcome_page_3_subtitle">Remember, you are always welcome  here</string>
 </resources>

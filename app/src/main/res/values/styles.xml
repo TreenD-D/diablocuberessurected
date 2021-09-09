@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base application theme. -->
+    <style name="Theme.DiabloCubeRessurected" parent="Theme.MaterialComponents.Light.NoActionBar">
+        <!-- Primary brand color. -->
+        <item name="colorPrimary">@color/dark_1</item>
+        <item name="colorPrimaryVariant">@color/dark_3</item>
+        <item name="colorOnPrimary">@color/orange</item>
+        <!-- Secondary brand color. -->
+        <item name="colorSecondary">@color/red</item>
+        <item name="colorSecondaryVariant">@color/red</item>
+        <item name="colorOnSecondary">@color/grey</item>
+        <!-- Status bar color. -->
+        <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
+
+
+        <item name="android:colorBackground">?attr/colorPrimary</item>
+        <item name="fontFamily">@font/d3_exocet</item>
+
+    </style>
+
+    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="android:windowBackground">@color/dark_1</item>
+    </style>
+
+    <style name="TitleStyle">
+        <item name="android:textSize">36sp</item>
+        <item name="android:textColor">@color/main_gradient</item>
+
+    </style>
+
+    <style name="WelcomeTitleStyle">
+        <item name="android:textSize">55sp</item>
+        <item name="android:letterSpacing">0.02</item>
+    </style>
+
+    <style name="WelcomeSubTitleStyle">
+        <item name="android:textSize">23sp</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="ButtonTextStyle">
+        <item name="android:textSize">23sp</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+</resources>
