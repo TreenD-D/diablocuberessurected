@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_graph.xml"
+    app:startDestination="@id/cube_recipes_page">
+
+    <fragment
+        android:id="@+id/cube_recipes_page"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.CubeFragment"
+        android:label="fragment_cube"
+        tools:layout="@layout/fragment_cube" />
+    <fragment
+        android:id="@+id/community_page"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.ChatFragment"
+        android:label="fragment_chat"
+        tools:layout="@layout/fragment_chat" />
+    <fragment
+        android:id="@+id/settings_page"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.SettingsFragment"
+        android:label="fragment_settings"
+        tools:layout="@layout/fragment_settings" />
+</navigation>

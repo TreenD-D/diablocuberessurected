@@ -4,6 +4,10 @@ dependencyResolutionManagement {
         google()
         mavenCentral()
         jcenter() // Warning: this repository is going to shut down soon
+        maven { url 'https://jitpack.io' }
+        maven { url "https://chatsdk.jfrog.io/artifactory/release/chat-sdk-android" }
+        maven { url "https://chatsdk.jfrog.io/artifactory/release/chatkit" }
+        maven { url "https://chatsdk.jfrog.io/artifactory/release/matisse" }
     }
 }
 rootProject.name = "DiabloCubeRessurected"

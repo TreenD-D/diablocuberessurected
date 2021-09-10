@@ -10,4 +10,7 @@
     <string name="welcome_page_2_subtitle">Here you can easily check all cube recipes and also have a chat with other fellow travellers</string>
     <string name="welcome_page_3_title">Have a nice time</string>
     <string name="welcome_page_3_subtitle">Remember, you are always welcome  here</string>
+    <string name="cube_bottomnav">Cube Recipes</string>
+    <string name="community_bottomnav">Community chat</string>
+    <string name="settings_bottomnav">Settings</string>
 </resources>

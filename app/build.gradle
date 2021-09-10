@@ -16,6 +16,7 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
+        multiDexEnabled = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
@@ -107,5 +108,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-analytics-ktx'
 
     implementation 'com.tbuonomo:dotsindicator:4.2'
+
+    implementation "sdk.chat:firebase-app:5.3.11"
 
 }
