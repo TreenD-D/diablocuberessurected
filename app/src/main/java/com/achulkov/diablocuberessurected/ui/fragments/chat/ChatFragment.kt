@@ -1,4 +1,4 @@
-package com.achulkov.diablocuberessurected.ui.fragments
+package com.achulkov.diablocuberessurected.ui.fragments.chat
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -29,6 +29,13 @@ class ChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        ChatSDK.ui().startSplashScreenActivity(context)
+/*        if(ChatSDK.auth().isAuthenticated){
+            ChatSDK.ui().startMainActivity(context)
+        }
+        else {
+
+        }*/
     }
 
 

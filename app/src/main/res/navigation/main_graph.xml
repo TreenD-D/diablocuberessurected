@@ -12,7 +12,7 @@
         tools:layout="@layout/fragment_cube" />
     <fragment
         android:id="@+id/community_page"
-        android:name="com.achulkov.diablocuberessurected.ui.fragments.ChatFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.chat.ChatFragment"
         android:label="fragment_chat"
         tools:layout="@layout/fragment_chat" />
     <fragment

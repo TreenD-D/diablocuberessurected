@@ -19,6 +19,8 @@ android {
         multiDexEnabled = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField "String", "GMAPS_STATIC_API_KEY", "\"${gmaps_static_key}\""
     }
 
     buildFeatures {
