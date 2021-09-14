@@ -1,4 +1,4 @@
-package com.achulkov.diablocuberessurected.ui.fragments.chat
+package com.achulkov.diablocuberessurected.ui.chat
 
 import android.content.Context
 import sdk.chat.ui.BaseInterfaceAdapter

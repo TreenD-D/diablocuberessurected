@@ -10,7 +10,7 @@ import androidx.preference.PreferenceManager
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import androidx.viewpager2.widget.ViewPager2
 import com.achulkov.diablocuberessurected.databinding.ActivityOnboardingBinding
-import com.achulkov.diablocuberessurected.ui.MainActivity
+import com.achulkov.diablocuberessurected.ui.DCMainActivity
 import com.achulkov.diablocuberessurected.ui.onboarding.page_fragments.PageFragment
 
 private const val NUM_PAGES = 3
@@ -48,7 +48,7 @@ class OnboardingActivity : AppCompatActivity(){
             PreferenceManager.getDefaultSharedPreferences(baseContext).edit()
                 .putBoolean(KEY_SHOW_WELCOME, false)
                 .apply()
-            startActivity(Intent(this, MainActivity::class.java))
+            startActivity(Intent(this, DCMainActivity::class.java))
             finish()
         }
     }

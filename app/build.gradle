@@ -113,4 +113,6 @@ dependencies {
 
     implementation "sdk.chat:firebase-app:5.3.11"
 
+    implementation "com.miguelcatalan:materialsearchview:1.4.0"
+
 }

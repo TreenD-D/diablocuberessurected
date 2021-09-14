@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/public_rooms_graph.xml"
+    app:startDestination="@id/DCubePublicThreadsFragment2">
+
+    <fragment
+        android:id="@+id/DCubePublicThreadsFragment2"
+        android:name="com.achulkov.diablocuberessurected.ui.chat.DCubePublicThreadsFragment"
+        android:label="fragment_d_cube_public_threads"
+        tools:layout="@layout/fragment_d_cube_public_threads" />
+</navigation>

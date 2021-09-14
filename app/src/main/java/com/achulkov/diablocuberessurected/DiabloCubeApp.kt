@@ -5,7 +5,11 @@ import androidx.appcompat.app.AppCompatDelegate
 import androidx.multidex.BuildConfig
 import androidx.multidex.MultiDexApplication
 import com.achulkov.diablocuberessurected.BuildConfig.GMAPS_STATIC_API_KEY
-import com.achulkov.diablocuberessurected.ui.fragments.chat.DCubeChatInterfaceAdapter
+import com.achulkov.diablocuberessurected.ui.DCMainActivity
+import com.achulkov.diablocuberessurected.ui.chat.DCChatActivity
+import com.achulkov.diablocuberessurected.ui.chat.DCubeChatInterfaceAdapter
+import com.achulkov.diablocuberessurected.ui.chat.DCubePrivateThreadsFragment
+import com.achulkov.diablocuberessurected.ui.chat.DCubePublicThreadsFragment
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider
 import dagger.hilt.android.HiltAndroidApp
@@ -13,9 +17,9 @@ import sdk.chat.core.session.ChatSDK
 import sdk.chat.firebase.adapter.module.FirebaseModule
 import sdk.chat.firebase.push.FirebasePushModule
 import sdk.chat.firebase.ui.FirebaseUIModule
+import sdk.chat.ui.ChatSDKUI
 import sdk.chat.ui.module.UIModule
 import timber.log.Timber
-import java.util.concurrent.TimeUnit
 
 @HiltAndroidApp
 class DiabloCubeApp : MultiDexApplication() {
@@ -72,11 +76,22 @@ class DiabloCubeApp : MultiDexApplication() {
             .build()
                 .activate(this)
 
-            ChatSDK.config().logoDrawableResourceID = R.mipmap.ic_launcher
+
 
             ChatSDK.shared().setInterfaceAdapter(DCubeChatInterfaceAdapter(this))
         } catch (e :Exception) {
-            e.printStackTrace();
+            e.printStackTrace()
         }
+
+        ChatSDK.config().logoDrawableResourceID = R.mipmap.ic_launcher
+        ChatSDK.config().threadDestructionEnabled = false
+
+        ChatSDK.ui().mainActivity = (DCMainActivity::class.java)
+        ChatSDK.ui().chatActivity = (DCChatActivity::class.java)
+        ChatSDKUI.setChatActivity(DCChatActivity::class.java)
+        ChatSDKUI.setPublicThreadsFragment(DCubePublicThreadsFragment())
+        ChatSDK.ui().setPublicThreadsFragment(DCubePublicThreadsFragment())
+        ChatSDKUI.setPrivateThreadsFragment(DCubePrivateThreadsFragment())
+        ChatSDK.ui().setPrivateThreadsFragment(DCubePrivateThreadsFragment())
     }
 }

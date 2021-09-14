@@ -12,12 +12,20 @@
         tools:layout="@layout/fragment_cube" />
     <fragment
         android:id="@+id/community_page"
-        android:name="com.achulkov.diablocuberessurected.ui.fragments.chat.ChatFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.chat.DCChatFragment"
         android:label="fragment_chat"
-        tools:layout="@layout/fragment_chat" />
+        tools:layout="@layout/fragment_dc_chat" />
     <fragment
         android:id="@+id/settings_page"
         android:name="com.achulkov.diablocuberessurected.ui.fragments.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
+    <fragment
+        android:id="@+id/DCubePublicThreadsFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.chat.DCubePublicThreadsFragment"
+        android:label="fragment_d_cube_public_threads" />
+    <fragment
+        android:id="@+id/DCubePrivateThreadsFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.chat.DCubePrivateThreadsFragment"
+        android:label="DCubePrivateThreadsFragment" />
 </navigation>

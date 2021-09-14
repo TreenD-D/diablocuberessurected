@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/private_rooms_graph.xml"
+    app:startDestination="@id/DCubePrivateThreadsFragment2">
+
+    <fragment
+        android:id="@+id/DCubePrivateThreadsFragment2"
+        android:name="com.achulkov.diablocuberessurected.ui.chat.DCubePrivateThreadsFragment"
+        android:label="DCubePrivateThreadsFragment" />
+</navigation>

@@ -1,8 +1,8 @@
 package com.achulkov.diablocuberessurected.ui
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
@@ -10,8 +10,10 @@ import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.ActivityMainBinding
 import com.achulkov.diablocuberessurected.ui.onboarding.OnboardingActivity
 import com.achulkov.diablocuberessurected.ui.onboarding.OnboardingActivity.Companion.KEY_SHOW_WELCOME
+import com.miguelcatalan.materialsearchview.MaterialSearchView
+import sdk.chat.ui.activities.MainActivity
 
-class MainActivity : AppCompatActivity() {
+class DCMainActivity : AppCompatActivity() {
 
 
     private lateinit var binding: ActivityMainBinding

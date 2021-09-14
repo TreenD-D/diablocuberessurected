@@ -13,7 +13,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.DiabloCubeRessurected">
         <activity
-            android:name=".ui.MainActivity"
+            android:name=".ui.DCMainActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,6 +22,9 @@
             </intent-filter>
         </activity>
 
+        <activity android:name="com.achulkov.diablocuberessurected.ui.chat.DCChatActivity">
+
+        </activity>
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
             android:exported="true">

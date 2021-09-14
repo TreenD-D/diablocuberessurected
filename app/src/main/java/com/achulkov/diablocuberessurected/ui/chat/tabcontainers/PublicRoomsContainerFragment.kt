@@ -1,4 +1,4 @@
-package com.achulkov.diablocuberessurected.ui.fragments
+package com.achulkov.diablocuberessurected.ui.chat.tabcontainers
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +7,10 @@ import android.view.View
 import android.view.ViewGroup
 import com.achulkov.diablocuberessurected.R
 
-
-class SettingsFragment : Fragment() {
+/**
+ * Wrapping class required for chats cause they behave like dialogs
+ */
+class PublicRoomsContainerFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +22,8 @@ class SettingsFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false)
+        return inflater.inflate(R.layout.fragment_public_rooms_container, container, false)
     }
+
 
 }

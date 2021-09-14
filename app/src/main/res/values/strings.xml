@@ -13,4 +13,6 @@
     <string name="cube_bottomnav">Cube Recipes</string>
     <string name="community_bottomnav">Community chat</string>
     <string name="settings_bottomnav">Settings</string>
+    <string name="chat_rooms_title">Chat Rooms</string>
+    <string name="conversations_title">Conversations</string>
 </resources>
