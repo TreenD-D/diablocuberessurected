@@ -9,6 +9,7 @@ import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentDcChatBinding
 import com.achulkov.diablocuberessurected.ui.chat.adapter.ChatsPagerAdapter
 import com.google.android.material.tabs.TabLayoutMediator
+import sdk.chat.core.session.ChatSDK
 
 
 class DCChatFragment : Fragment() {
@@ -31,6 +32,11 @@ class DCChatFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        //log user in
+        if(!ChatSDK.auth().isAuthenticated){
+            ChatSDK.ui().startSplashScreenActivity(context)
+        }
+
         binding = FragmentDcChatBinding.bind(view)
 
         val tabLayout = binding.tabs
@@ -52,17 +58,6 @@ class DCChatFragment : Fragment() {
             }
         }.attach()
 
-//        requireActivity().findNavController(R.id.chat_container_threads).navigate(R.id.DCubePrivateThreadsFragment)
-
-
-//        ChatSDK.ui().startSplashScreenActivity(context)
-/*
-        if(ChatSDK.auth().isAuthenticated){
-            ChatSDK.ui().startMainActivity(context)
-        }
-        else {
-            ChatSDK.ui().startSplashScreenActivity()
-        }*/
     }
 
 
