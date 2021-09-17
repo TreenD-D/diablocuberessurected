@@ -12,6 +12,8 @@ import com.achulkov.diablocuberessurected.ui.chat.DCubePrivateThreadsFragment
 import com.achulkov.diablocuberessurected.ui.chat.DCubePublicThreadsFragment
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.HiltAndroidApp
 import sdk.chat.core.session.ChatSDK
 import sdk.chat.firebase.adapter.module.FirebaseModule
@@ -24,6 +26,7 @@ import timber.log.Timber
 @HiltAndroidApp
 class DiabloCubeApp : MultiDexApplication() {
     override fun onCreate() {
+        Firebase.database.setPersistenceEnabled(true)
         super.onCreate()
 
         AppCompatDelegate.setCompatVectorFromResourcesEnabled(true)

@@ -2,6 +2,11 @@ package com.achulkov.diablocuberessurected.data
 
 
 import com.achulkov.diablocuberessurected.BuildConfig
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
+import com.google.firebase.storage.FirebaseStorage
+import com.google.firebase.storage.ktx.storage
 import com.squareup.moshi.Moshi
 import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import dagger.Binds
@@ -63,6 +68,17 @@ abstract class DataModule {
             return retrofit.create(MetaDiabloApi::class.java)
         }
 
+        @Provides
+        @Singleton
+        fun getFirebaseStorage() : FirebaseStorage {
+            return Firebase.storage
+        }
+
+        @Provides
+        @Singleton
+        fun getFirebaseDatabase() : FirebaseDatabase {
+            return Firebase.database
+        }
 
 
     }

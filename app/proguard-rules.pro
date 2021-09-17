@@ -44,4 +44,13 @@
 -keep class com.bumptech.glide.load.data.ParcelFileDescriptorRewinder$InternalRewinder {
   *** rewind();
 }
+
+#Firebase Realtime DB
+# Add this global rule
+-keepattributes Signature
+
+-keepclassmembers class com.achulkov.data.models.** {
+      *;
+}
+
 # End
