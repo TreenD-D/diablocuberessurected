@@ -8,4 +8,6 @@
     <color name="grey">#494C53</color>
     <color name="orange">#FF7B36</color>
     <color name="red">#F80505</color>
+    <color name="metallic_yellow">#fdcc0d</color>
+    <color name="gold_yellow">#d4af37</color>
 </resources>

@@ -20,6 +20,19 @@
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
 
+        <style name="CustomChatSDKTheme" parent="ChatSDKTheme">
+            <item name="colorPrimary">#FF0000</item>
+            <item name="colorPrimaryDark">@color/dark_3</item>
+            <item name="colorAccent">@color/dark_4</item>
+            <item name="colorControlNormal">@color/text_primary</item>
+            <item name="actionBarBackgroundColor">@color/dark_3</item>
+            <item name="systemDefaultBubbleColor">@color/grey</item>
+            <item name="systemMessageTextColor">@color/white</item>
+
+
+
+        </style>
+
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
         <item name="materialThemeOverlay">@style/ThemeOverlay.App.BottomNavigationView</item>
@@ -54,6 +67,17 @@
     <style name="ButtonTextStyle">
         <item name="android:textSize">23sp</item>
         <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="ItemTitleStyle">
+        <item name="android:textSize">20sp</item>
+        <item name="android:letterSpacing">0.02</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="ItemSubTitleStyle">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@color/gold_yellow</item>
     </style>
 
 </resources>

@@ -1,4 +1,4 @@
-package com.achulkov.diablocuberessurected.ui.fragments
+package com.achulkov.diablocuberessurected.ui.fragments.cube
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -8,7 +8,7 @@ import android.view.ViewGroup
 import com.achulkov.diablocuberessurected.R
 
 
-class RecipesListFragment : Fragment() {
+class SingleItemFragment : Fragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -20,7 +20,7 @@ class RecipesListFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recipes_list, container, false)
+        return inflater.inflate(R.layout.fragment_single_item, container, false)
     }
 
 

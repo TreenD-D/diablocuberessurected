@@ -40,7 +40,7 @@
                 android:layout_height="1dp"
                 android:layout_marginLeft="16dp"
                 android:layout_marginRight="16dp"
-                android:background="?chatViewDividerColor"/>
+                android:background="@color/orange"/>
 
             <sdk.chat.ui.views.ReplyView
                 android:id="@+id/replyView"
@@ -53,13 +53,17 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:showAttachmentButton="false"
-                android:background="@color/orange"/>
+                app:inputTextColor="@color/gold_yellow"
+                app:inputButtonIcon="@drawable/ic_send_message"
+                app:inputButtonBackground="@color/dark_3"
+                android:background="@color/dark_3"/>
 
         </LinearLayout>
     </androidx.coordinatorlayout.widget.CoordinatorLayout>
 
     <com.miguelcatalan.materialsearchview.MaterialSearchView
         android:id="@+id/searchView"
+        android:backgroundTint="@color/dark_3"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 

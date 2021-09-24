@@ -44,9 +44,9 @@ class DCMainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navController)
 
 
-        viewModel.recipesList.observe(this , {
-            val list = it
-            Timber.d(it.toString())
+        viewModel.recipesList.observe(this ,{
+            val recipes = it
+            Timber.d("woooot a great liist")
         })
 
     }

@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/cube_recipes_page"
-        android:name="com.achulkov.diablocuberessurected.ui.fragments.CubeFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.cube.CubeFragment"
         android:label="fragment_cube"
         tools:layout="@layout/fragment_cube" />
     <fragment
@@ -28,4 +28,9 @@
         android:id="@+id/DCubePrivateThreadsFragment"
         android:name="com.achulkov.diablocuberessurected.ui.chat.DCubePrivateThreadsFragment"
         android:label="DCubePrivateThreadsFragment" />
+    <fragment
+        android:id="@+id/recipesListFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.cube.RecipesListFragment"
+        android:label="fragment_recipes_list"
+        tools:layout="@layout/fragment_recipes_list" />
 </navigation>

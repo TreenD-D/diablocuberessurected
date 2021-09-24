@@ -5,6 +5,7 @@ import com.achulkov.diablocuberessurected.BuildConfig
 import com.google.firebase.database.FirebaseDatabase
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
+import com.google.firebase.ktx.app
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.ktx.storage
 import com.squareup.moshi.Moshi
@@ -71,7 +72,7 @@ abstract class DataModule {
         @Provides
         @Singleton
         fun getFirebaseStorage() : FirebaseStorage {
-            return Firebase.storage
+            return Firebase.storage("gs://diablocuberessurectedimages")
         }
 
         @Provides

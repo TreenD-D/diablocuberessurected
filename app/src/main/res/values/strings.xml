@@ -15,4 +15,8 @@
     <string name="settings_bottomnav">Settings</string>
     <string name="chat_rooms_title">Chat Rooms</string>
     <string name="conversations_title">Conversations</string>
+    <string name="search_results_counter">Total recipes: %1$s</string>
+    <string name="icon">Item icon</string>
+    <string name="text_stub">Test text for testing tests</string>
+    <string name="chat_rooms_header">Chats</string>
 </resources>

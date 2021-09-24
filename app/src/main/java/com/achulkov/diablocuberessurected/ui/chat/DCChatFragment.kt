@@ -1,10 +1,13 @@
 package com.achulkov.diablocuberessurected.ui.chat
 
+import android.graphics.LinearGradient
+import android.graphics.Shader
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentDcChatBinding
 import com.achulkov.diablocuberessurected.ui.chat.adapter.ChatsPagerAdapter
@@ -44,6 +47,8 @@ class DCChatFragment : Fragment() {
 
         viewPager.adapter =
             ChatsPagerAdapter(childFragmentManager, lifecycle)
+
+
 
         TabLayoutMediator(tabLayout, viewPager
         ) { tab, position ->

@@ -7,7 +7,6 @@ import androidx.lifecycle.Lifecycle
 import androidx.viewpager2.adapter.FragmentStateAdapter
 import com.achulkov.diablocuberessurected.ui.chat.tabcontainers.PrivateRoomsContainerFragment
 import com.achulkov.diablocuberessurected.ui.chat.tabcontainers.PublicRoomsContainerFragment
-import com.achulkov.diablocuberessurected.ui.fragments.CubeFragment
 
 class ChatsPagerAdapter (
     fragmentManager: FragmentManager,

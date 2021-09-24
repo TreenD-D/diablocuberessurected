@@ -7,8 +7,8 @@ import com.bumptech.glide.RequestBuilder
 import com.google.firebase.storage.StorageReference
 
 interface ImageLoader {
-    fun load(context: Context, url: String): RequestBuilder<Drawable>
-    fun load(context: Context, ref: StorageReference): RequestBuilder<Drawable>
+    fun load(url: String): RequestBuilder<Drawable>
+    fun load(ref: StorageReference): RequestBuilder<Drawable>
 
     interface ImageRequest {
 
@@ -16,6 +16,7 @@ interface ImageLoader {
         fun into(view: ImageView)
         fun placeholder(imageResource: Int): RequestBuilder<Drawable>
         fun error(imageResource: Int): RequestBuilder<Drawable>
+        fun fitCenter(): RequestBuilder<Drawable>
     }
 
 }

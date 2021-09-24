@@ -4,6 +4,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.achulkov.diablocuberessurected.data.DCubeDataRepo
 import com.achulkov.diablocuberessurected.data.models.DCubeItem
+import com.achulkov.diablocuberessurected.data.models.DCubeMappedInput
+import com.achulkov.diablocuberessurected.data.models.DCubeMappedRecipe
 import com.achulkov.diablocuberessurected.data.models.DCubeRecipe
 import dagger.hilt.android.lifecycle.HiltViewModel
 import durdinapps.rxfirebase2.RxFirebaseDatabase
@@ -20,33 +22,20 @@ class MainViewModel @Inject constructor(
 
     private val disposables : CompositeDisposable = CompositeDisposable()
 
-    val recipesList : MutableLiveData<List<DCubeRecipe>> = MutableLiveData()
+    val recipesList : MutableLiveData<List<DCubeMappedRecipe>> = MutableLiveData()
     val itemsList : MutableLiveData<List<DCubeItem>> = MutableLiveData()
 
+
     init {
-        getRecipesList()
         getItemsList()
-    }
-
-    fun getRecipesList() {
-        disposables.add(RxFirebaseDatabase.observeSingleValueEvent(dataRepo.getFirebaseDbReference().child("recipes"))
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({dataSnap ->
-                val list : MutableList<DCubeRecipe> = mutableListOf()
-                dataSnap.children.forEach {
-                    val singleRecipe = it.getValue(DCubeRecipe::class.java)
-                    singleRecipe?.let { it1 -> list.add(it1) }
-                }
-                recipesList.postValue(list)
-
-            })
-            {throwable -> Timber.e(throwable)}
-        )
 
     }
 
-    fun getItemsList() {
+
+    /**
+     * get all items from DB and triggers recipes list mapping
+     */
+    private fun getItemsList() {
         disposables.add(RxFirebaseDatabase.observeSingleValueEvent(dataRepo.getFirebaseDbReference().child("items"))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
@@ -57,12 +46,54 @@ class MainViewModel @Inject constructor(
                     singleItem?.let { it1 -> list.add(it1) }
                 }
                 itemsList.postValue(list)
+                getRecipesList(items = list)
 
             })
             {throwable -> Timber.e(throwable)}
         )
 
     }
+
+    /**
+     * gets all recipes from DB and maps them to DCubeMappedItems using items
+     * triggered by getting list from getItemsList()
+     * @param items list af all items
+     */
+    private fun getRecipesList(items: List<DCubeItem>) {
+        disposables.add(RxFirebaseDatabase.observeSingleValueEvent(dataRepo.getFirebaseDbReference().child("recipes"))
+            .map { dataSnap ->
+                val list : MutableList<DCubeMappedRecipe> = mutableListOf()
+                dataSnap.children.forEach {
+                    val singleRecipe = it.getValue(DCubeRecipe::class.java)
+                    singleRecipe?.let { recipe ->
+                        var output : DCubeItem = DCubeItem()
+                        val inputs : MutableList<DCubeMappedInput> = mutableListOf()
+                        for(item in items){
+                            if(recipe.output == item.itemname) {
+                                output = item
+                            }
+                            for(input in recipe.inputs){
+                                if(input.name == item.itemname) {
+                                    inputs.add(DCubeMappedInput(input.count, item))
+                                }
+                            }
+                        }
+                        list.add(DCubeMappedRecipe(recipe.name, inputs, output))
+                    }
+                }
+                list
+            }
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({ list ->
+                recipesList.postValue(list)
+
+            })
+            {throwable -> Timber.e(throwable)}
+        )
+
+    }
+
 
 
 

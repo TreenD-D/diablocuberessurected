@@ -5,21 +5,30 @@ import android.graphics.drawable.Drawable
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
+import com.bumptech.glide.RequestManager
 import com.google.firebase.storage.StorageReference
+import javax.inject.Inject
+import javax.inject.Singleton
 
-class GlideImageLoader : ImageLoader {
+@Singleton
+class GlideImageLoader @Inject constructor(
+    private val glide: RequestManager) : ImageLoader {
 
-    override fun load(context: Context, url: String): RequestBuilder<Drawable>{
-        return Glide.with(context).load(url)
+    override fun load(url: String): RequestBuilder<Drawable>{
+        return glide.load(url)
     }
 
-    override fun load(context: Context, ref : StorageReference ) : RequestBuilder<Drawable>{
-        return Glide.with(context).load(ref)
+    override fun load(ref : StorageReference ) : RequestBuilder<Drawable>{
+        return glide.load(ref)
     }
 
     private inner class GlideRequestBuilder(val requestBuilder: RequestBuilder<Drawable>) : ImageLoader.ImageRequest{
         override fun centerCrop(): RequestBuilder<Drawable> {
             return requestBuilder.centerCrop()
+        }
+
+        override fun fitCenter(): RequestBuilder<Drawable> {
+            return requestBuilder.fitCenter()
         }
 
         override fun placeholder(imageResource : Int): RequestBuilder<Drawable> {

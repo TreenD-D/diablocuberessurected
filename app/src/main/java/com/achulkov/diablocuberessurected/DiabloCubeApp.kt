@@ -48,7 +48,7 @@ class DiabloCubeApp : MultiDexApplication() {
                 .setReuseDeleted1to1Threads(true)
                 .setPushNotificationColor(R.color.grey)
                 .setPushNotificationImageDefaultResourceId(R.mipmap.ic_launcher)
-//                .setPublicChatRoomLifetimeMinutes(TimeUnit.DAYS.toMinutes(30))
+                .setPublicChatRoomLifetimeMinutes(0)
                 .setRolesEnabled(true)
                 .build()
             // Add the Firebase network adapter module
@@ -88,6 +88,7 @@ class DiabloCubeApp : MultiDexApplication() {
 
         ChatSDK.config().logoDrawableResourceID = R.mipmap.ic_launcher
         ChatSDK.config().threadDestructionEnabled = false
+        UIModule.config().setTheme(R.style.CustomChatSDKTheme)
 
         ChatSDK.ui().mainActivity = (DCMainActivity::class.java)
         ChatSDK.ui().chatActivity = (DCChatActivity::class.java)

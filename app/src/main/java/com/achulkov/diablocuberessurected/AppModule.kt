@@ -3,6 +3,9 @@ package com.achulkov.diablocuberessurected
 import android.app.Application
 import android.content.Context
 import android.net.TrafficStats
+import com.achulkov.diablocuberessurected.util.GlideApp
+import com.bumptech.glide.Glide
+import com.bumptech.glide.RequestManager
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -69,6 +72,14 @@ class AppModule {
             .writeTimeout(15, TimeUnit.SECONDS)
             .readTimeout(15, TimeUnit.SECONDS)
         return builder.build()
+    }
+
+    @Provides
+    @Singleton
+    fun glide(
+        context: Context
+    ) : RequestManager {
+        return GlideApp.with(context)
     }
 
 
