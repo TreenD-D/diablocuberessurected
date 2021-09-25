@@ -6,10 +6,7 @@ import androidx.multidex.BuildConfig
 import androidx.multidex.MultiDexApplication
 import com.achulkov.diablocuberessurected.BuildConfig.GMAPS_STATIC_API_KEY
 import com.achulkov.diablocuberessurected.ui.DCMainActivity
-import com.achulkov.diablocuberessurected.ui.chat.DCChatActivity
-import com.achulkov.diablocuberessurected.ui.chat.DCubeChatInterfaceAdapter
-import com.achulkov.diablocuberessurected.ui.chat.DCubePrivateThreadsFragment
-import com.achulkov.diablocuberessurected.ui.chat.DCubePublicThreadsFragment
+import com.achulkov.diablocuberessurected.ui.chat.*
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.ktx.database
@@ -88,14 +85,21 @@ class DiabloCubeApp : MultiDexApplication() {
 
         ChatSDK.config().logoDrawableResourceID = R.mipmap.ic_launcher
         ChatSDK.config().threadDestructionEnabled = false
-        UIModule.config().setTheme(R.style.CustomChatSDKTheme)
+        UIModule.config().setTheme(R.style.Theme_DiabloCubeRessurected)
 
         ChatSDK.ui().mainActivity = (DCMainActivity::class.java)
         ChatSDK.ui().chatActivity = (DCChatActivity::class.java)
+        ChatSDK.ui().profileActivity = (DCubeChatProfileActivity::class.java)
         ChatSDKUI.setChatActivity(DCChatActivity::class.java)
         ChatSDKUI.setPublicThreadsFragment(DCubePublicThreadsFragment())
+        ChatSDKUI.setProfileActivity(DCubeChatProfileActivity::class.java)
         ChatSDK.ui().setPublicThreadsFragment(DCubePublicThreadsFragment())
         ChatSDKUI.setPrivateThreadsFragment(DCubePrivateThreadsFragment())
         ChatSDK.ui().setPrivateThreadsFragment(DCubePrivateThreadsFragment())
+        UIModule.config().profileHeaderImage = R.drawable.profile_bcg
+        UIModule.config().customizeGroupImageEnabled = false
+        UIModule.config().showAvatarInChatView = true
+        UIModule.config().threadDetailsEnabled = false
+        UIModule.config().resetPasswordEnabled = false
     }
 }

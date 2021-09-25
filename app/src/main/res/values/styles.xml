@@ -14,24 +14,28 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
 
+        <!-- ChatSDK -->
+        <item name="colorPrimaryDark">@color/dark_3</item>
+        <item name="colorAccent">@color/dark_4</item>
+        <item name="colorControlNormal">@color/text_primary</item>
+        <item name="actionBarBackgroundColor">@color/dark_3</item>
+        <item name="systemDefaultBubbleColor">@color/grey</item>
+        <item name="systemMessageTextColor">@color/white</item>
+        <item name="incomingTextColor">@color/white</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="incomingDefaultBubbleColor">@color/grey</item>
+        <item name="outcomingDefaultBubbleColor">@color/grey</item>
+        <item name="incomingDefaultBubblePressedColor">@color/chat_orange</item>
+        <item name="incomingDefaultBubbleSelectedColor">@color/red</item>
+        <item name="dialogTitleTextColor">@color/gold_yellow</item>
+        <item name="dialogMessageTextColor">@color/white</item>
+
+
 
         <item name="android:colorBackground">?attr/colorPrimary</item>
         <item name="fontFamily">@font/d3_exocet</item>
         <item name="bottomNavigationStyle">@style/Widget.App.BottomNavigationView</item>
     </style>
-
-        <style name="CustomChatSDKTheme" parent="ChatSDKTheme">
-            <item name="colorPrimary">#FF0000</item>
-            <item name="colorPrimaryDark">@color/dark_3</item>
-            <item name="colorAccent">@color/dark_4</item>
-            <item name="colorControlNormal">@color/text_primary</item>
-            <item name="actionBarBackgroundColor">@color/dark_3</item>
-            <item name="systemDefaultBubbleColor">@color/grey</item>
-            <item name="systemMessageTextColor">@color/white</item>
-
-
-
-        </style>
 
 
     <style name="Widget.App.BottomNavigationView" parent="Widget.MaterialComponents.BottomNavigationView.Colored">
@@ -62,6 +66,16 @@
     <style name="WelcomeSubTitleStyle">
         <item name="android:textSize">23sp</item>
         <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="AppSubTitleStyle">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@color/orange</item>
+    </style>
+
+    <style name="SettingsTitleStyle">
+        <item name="android:textSize">30sp</item>
+        <item name="android:letterSpacing">0.02</item>
     </style>
 
     <style name="ButtonTextStyle">

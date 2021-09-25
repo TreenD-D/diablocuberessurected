@@ -6,21 +6,19 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.achulkov.diablocuberessurected.R
+import sdk.chat.ui.fragments.ProfileFragment
 
 
-class DCubeChatProfileFragment : Fragment() {
+class DCubeChatProfileFragment : ProfileFragment() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
     }
 
-    override fun onCreateView(
-        inflater: LayoutInflater, container: ViewGroup?,
-        savedInstanceState: Bundle?
-    ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_d_cube_chat_profile, container, false)
+
+    override fun getLayout(): Int {
+        return R.layout.fragment_d_cube_chat_profile
     }
 
 

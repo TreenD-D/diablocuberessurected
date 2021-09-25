@@ -12,9 +12,11 @@ import androidx.viewpager2.widget.ViewPager2
 import com.achulkov.diablocuberessurected.databinding.ActivityOnboardingBinding
 import com.achulkov.diablocuberessurected.ui.DCMainActivity
 import com.achulkov.diablocuberessurected.ui.onboarding.page_fragments.PageFragment
+import dagger.hilt.android.AndroidEntryPoint
 
 private const val NUM_PAGES = 3
 
+@AndroidEntryPoint
 class OnboardingActivity : AppCompatActivity(){
     companion object{
         val KEY_SHOW_WELCOME = "show_welcome"

@@ -17,7 +17,7 @@
         tools:layout="@layout/fragment_dc_chat" />
     <fragment
         android:id="@+id/settings_page"
-        android:name="com.achulkov.diablocuberessurected.ui.fragments.SettingsFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.settings.SettingsFragment"
         android:label="fragment_settings"
         tools:layout="@layout/fragment_settings" />
     <fragment
@@ -33,4 +33,9 @@
         android:name="com.achulkov.diablocuberessurected.ui.fragments.cube.RecipesListFragment"
         android:label="fragment_recipes_list"
         tools:layout="@layout/fragment_recipes_list" />
+    <fragment
+        android:id="@+id/aboutAppFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.settings.AboutAppFragment"
+        android:label="fragment_about_app"
+        tools:layout="@layout/fragment_about_app" />
 </navigation>

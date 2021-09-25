@@ -21,8 +21,10 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
         buildConfigField "String", "GMAPS_STATIC_API_KEY", "\"${gmaps_static_key}\""
+
         buildConfigField "String", "API_ENDPOINT_METADIABLO", '"https://api.metadiablo.com/v1"'
         buildConfigField "String", "METADIABLO_API_KEY", "\"${metadiablo_key}\""
+
     }
 
     buildFeatures {

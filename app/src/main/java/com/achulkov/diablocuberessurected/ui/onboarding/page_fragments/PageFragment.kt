@@ -10,11 +10,16 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentPageBinding
+import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
+import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
 
-
+@AndroidEntryPoint
 class PageFragment : Fragment() {
 
     private lateinit var binding: FragmentPageBinding
+    @Inject
+    lateinit var gradientSetter : TextViewGradientSetter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -56,10 +61,8 @@ class PageFragment : Fragment() {
         }
 
 
-        binding.title.paint.shader = LinearGradient(0f, 0f, binding.title.paint.measureText(binding.title.text.toString()), binding.title.textSize,
-            ResourcesCompat.getColor(resources, R.color.red, null),
-            ResourcesCompat.getColor(resources, R.color.orange, null),
-            Shader.TileMode.CLAMP)
+
+        gradientSetter.setTextViewGradient(binding.title)
 
     }
 

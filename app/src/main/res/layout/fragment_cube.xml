@@ -11,7 +11,6 @@
         android:id="@+id/main_cube_background"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="-100dp"
         android:adjustViewBounds="true"
         android:contentDescription="@string/background_fire_image_desc"
         android:scaleX="0.5"
@@ -20,7 +19,7 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/main_cube_background" />
+        app:srcCompat="@drawable/cube_background" />
 
     <ImageView
         android:id="@+id/top_fire"
@@ -36,6 +35,19 @@
         app:srcCompat="@drawable/main_top_fire"
         android:contentDescription="@string/background_fire_image_desc" />
 
+    <ImageView
+        android:id="@+id/item_result_image"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:adjustViewBounds="true"
+        android:contentDescription="@string/background_fire_image_desc"
+        android:scaleX="0.5"
+        android:scaleY="0.5"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/cube_background" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

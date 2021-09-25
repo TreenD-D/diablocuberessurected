@@ -1,7 +1,6 @@
 package com.achulkov.diablocuberessurected.ui.chat
 
 import android.os.Bundle
-import com.achulkov.diablocuberessurected.ui.fragments.SettingsFragment
 import sdk.chat.ui.fragments.PublicThreadsFragment
 
 

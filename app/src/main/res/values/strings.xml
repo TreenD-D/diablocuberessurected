@@ -19,4 +19,21 @@
     <string name="icon">Item icon</string>
     <string name="text_stub">Test text for testing tests</string>
     <string name="chat_rooms_header">Chats</string>
+    <string name="app_title">DIABLO</string>
+    <string name="app_subtitle">cube ressurected</string>
+    <string name="settings_title">- SETTINGS -</string>
+    <string name="profile_button">Profile</string>
+    <string name="about_button">About</string>
+    <string name="need_to_login">To be able to edit your profile, you need to log in to chats first.</string>
+    <string name="dismiss_snack">Dismiss</string>
+    <string name="about_app">Hello friend!\nApp is currently under development and I\'m planning to add more features soon, Please report any suggestions or bugs you found to in-app group chat \"App feedback\" or feel free to send an email to app.diablocube@yahoo.com
+    \n\nApp was intended to be just a nice representation of cube recipes and not an overall diablo database resource, but it can be added later if there will be any API with all data.
+    \n\nCurrent development plan includes:
+    \n-add runewords
+    \n-add localization(probably ru first)
+    \n-improve current cube view
+    \n\nRemember, you are welcome here! There will be a minimum ads possible(currently one banner at settings page)
+    \n\n Also, I can recommend some great Diablo II info websites:
+    \n diablo2.io
+    \n metadiablo.com</string>
 </resources>

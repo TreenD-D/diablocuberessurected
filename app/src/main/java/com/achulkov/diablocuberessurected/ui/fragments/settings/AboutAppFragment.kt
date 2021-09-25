@@ -1,23 +1,25 @@
-package com.achulkov.diablocuberessurected.ui.fragments.cube
+package com.achulkov.diablocuberessurected.ui.fragments.settings
 
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.activityViewModels
-import androidx.navigation.findNavController
+import androidx.core.text.HtmlCompat
 import com.achulkov.diablocuberessurected.R
-import com.achulkov.diablocuberessurected.databinding.FragmentCubeBinding
-import com.achulkov.diablocuberessurected.ui.MainViewModel
+import com.achulkov.diablocuberessurected.databinding.FragmentAboutAppBinding
+import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
 import dagger.hilt.android.AndroidEntryPoint
+import javax.inject.Inject
+
 
 @AndroidEntryPoint
-class CubeFragment : Fragment() {
+class AboutAppFragment : Fragment() {
 
-    private lateinit var binding : FragmentCubeBinding
+    @Inject
+    lateinit var gradientSetter : TextViewGradientSetter
 
-    private val viewModel : MainViewModel by activityViewModels()
+    private lateinit var binding: FragmentAboutAppBinding
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,19 +31,16 @@ class CubeFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View? {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_cube, container, false)
+        return inflater.inflate(R.layout.fragment_about_app, container, false)
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        binding = FragmentCubeBinding.bind(view)
+        binding = FragmentAboutAppBinding.bind(view)
 
 
-        //temp
-//        requireActivity().findNavController(R.id.main_host).navigate(R.id.recipesListFragment)
-
-
-
+        gradientSetter.setTextViewGradient(binding.appNameTitle)
+        gradientSetter.setTextViewGradient(binding.appNameSubtitle)
 
     }
 

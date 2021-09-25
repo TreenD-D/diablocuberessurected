@@ -5,7 +5,7 @@
     android:id="@+id/top_layout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ui.fragments.settings.SettingsFragment">
+    tools:context=".ui.fragments.settings.AboutAppFragment">
 
     <ImageView
         android:id="@+id/top_fire"
@@ -50,57 +50,24 @@
         android:text="@string/app_subtitle" />
 
     <TextView
-        android:id="@+id/settings_title"
+        android:id="@+id/app_info_text"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:layout_marginStart="20dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="20dp"
-        android:gravity="center_horizontal|top"
-        android:textAppearance="@style/SettingsTitleStyle"
+        android:layout_marginBottom="20dp"
+        android:autoLink="web|email"
+        android:gravity="start|top"
+        android:text="@string/about_app"
+        android:textAppearance="@style/AppSubTitleStyle"
+        android:textColor="@color/white"
+        android:textColorLink="@color/gold_yellow"
+        android:textStyle="italic"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_name_subtitle"
-        android:text="@string/settings_title" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/profile_button"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="160dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="75dp"
-        android:text="@string/profile_button"
-        android:textAppearance="@style/ButtonTextStyle"
-        android:textColor="@color/orange"
-        app:icon="@drawable/ic_profile_button"
-        app:iconPadding="12dp"
-        app:iconSize="24dp"
-        app:iconTint="@color/transparent"
-        app:iconTintMode="add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/settings_title"
-        app:rippleColor="@color/red" />
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/about_button"
-        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-        android:layout_width="160dp"
-        android:layout_height="65dp"
-        android:layout_marginTop="15dp"
-        android:text="@string/about_button"
-        android:textAppearance="@style/ButtonTextStyle"
-        android:textColor="@color/orange"
-        app:icon="@drawable/ic_about_button"
-        app:iconPadding="12dp"
-        app:iconSize="24dp"
-        app:iconTint="@color/transparent"
-        app:iconTintMode="add"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/profile_button"
-        app:rippleColor="@color/red" />
-
+        app:layout_constraintTop_toBottomOf="@id/app_name_subtitle" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
