@@ -7,30 +7,31 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.achulkov.diablocuberessurected.data.models.DCubeMappedRecipe
-import com.achulkov.diablocuberessurected.databinding.ListRecipeItemBinding
+import com.achulkov.diablocuberessurected.R
+import com.achulkov.diablocuberessurected.data.models.DCubeMappedInput
+import com.achulkov.diablocuberessurected.databinding.ListItemBinding
 import com.achulkov.diablocuberessurected.util.ImageLoader
 import com.google.firebase.storage.FirebaseStorage
 import javax.inject.Inject
 
-class RecipeListAdapter @Inject constructor(
+class ItemListAdapter @Inject constructor(
     private val imageLoader: ImageLoader,
     private val storage: FirebaseStorage
-) : ListAdapter<DCubeMappedRecipe, RecipeListAdapter.ViewHolder>(object : DiffUtil.ItemCallback<DCubeMappedRecipe>() {
-    override fun areItemsTheSame(oldItem: DCubeMappedRecipe, newItem: DCubeMappedRecipe): Boolean {
-        return oldItem.name == newItem.name
+) : ListAdapter<DCubeMappedInput, ItemListAdapter.ViewHolder>(object : DiffUtil.ItemCallback<DCubeMappedInput>() {
+    override fun areItemsTheSame(oldItem: DCubeMappedInput, newItem: DCubeMappedInput): Boolean {
+        return oldItem.item.itemname == newItem.item.itemname
     }
 
     @SuppressLint("DiffUtilEquals")
-    override fun areContentsTheSame(oldItem: DCubeMappedRecipe, newItem: DCubeMappedRecipe): Boolean {
+    override fun areContentsTheSame(oldItem: DCubeMappedInput, newItem: DCubeMappedInput): Boolean {
         return oldItem == newItem
     }
-    override fun getChangePayload(oldItem: DCubeMappedRecipe, newItem: DCubeMappedRecipe): Any {
+    override fun getChangePayload(oldItem: DCubeMappedInput, newItem: DCubeMappedInput): Any {
         return newItem
     }
 }) {
     interface AdapterItemClickListener{
-        fun onAdapterItemClick(recipe : DCubeMappedRecipe)
+        fun onAdapterItemClick(item : DCubeMappedInput)
     }
 
     fun setListener(listener : AdapterItemClickListener){
@@ -41,21 +42,22 @@ class RecipeListAdapter @Inject constructor(
     private lateinit var listener: AdapterItemClickListener
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        return ViewHolder(ListRecipeItemBinding.inflate(inflater, parent, false))
+        return ViewHolder(ListItemBinding.inflate(inflater, parent, false))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val recipe: DCubeMappedRecipe = getItem(position)
+        val input: DCubeMappedInput = getItem(position)
 
 
-        holder.binding.title.text = recipe.name
-        holder.binding.subtitle.text = recipe.output.itemdesc
+        holder.binding.title.text = input.item.itemname
+        holder.binding.subtitle.text = input.item.itemdesc
+        holder.binding.countText.text = String.format(holder.itemView.resources.getString(R.string.count_text), input.count)
 
-        if(!recipe.output.image.isNullOrEmpty())
-        imageLoader
-            .load(storage.getReferenceFromUrl(recipe.output.image))
-            .centerCrop()
-            .into(holder.binding.icon)
+        if(input.item.image.isNotEmpty())
+            imageLoader
+                .load(storage.getReferenceFromUrl(input.item.image))
+                .centerCrop()
+                .into(holder.binding.icon)
 
     }
 
@@ -69,7 +71,7 @@ class RecipeListAdapter @Inject constructor(
     }
 
 
-    inner class ViewHolder(var binding: ListRecipeItemBinding) : RecyclerView.ViewHolder(binding.root) {
+    inner class ViewHolder(var binding: ListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
         init {
             itemView.setOnClickListener {

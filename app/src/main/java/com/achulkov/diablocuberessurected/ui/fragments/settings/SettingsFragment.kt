@@ -12,6 +12,7 @@ import androidx.navigation.findNavController
 import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentSettingsBinding
 import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
+import com.google.android.gms.ads.AdRequest
 import com.google.android.material.snackbar.Snackbar
 import dagger.hilt.android.AndroidEntryPoint
 import sdk.chat.core.session.ChatSDK
@@ -63,6 +64,10 @@ class SettingsFragment : Fragment() {
         binding.aboutButton.setOnClickListener {
             requireActivity().findNavController(R.id.main_host).navigate(R.id.aboutAppFragment)
         }
+
+
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
 
 
     }

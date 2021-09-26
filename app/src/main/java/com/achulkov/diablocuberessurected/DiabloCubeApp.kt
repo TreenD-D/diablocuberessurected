@@ -7,6 +7,7 @@ import androidx.multidex.MultiDexApplication
 import com.achulkov.diablocuberessurected.BuildConfig.GMAPS_STATIC_API_KEY
 import com.achulkov.diablocuberessurected.ui.DCMainActivity
 import com.achulkov.diablocuberessurected.ui.chat.*
+import com.google.android.gms.ads.MobileAds
 import com.google.firebase.auth.EmailAuthProvider
 import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.ktx.database
@@ -101,5 +102,8 @@ class DiabloCubeApp : MultiDexApplication() {
         UIModule.config().showAvatarInChatView = true
         UIModule.config().threadDetailsEnabled = false
         UIModule.config().resetPasswordEnabled = false
+
+        MobileAds.initialize(this)
+
     }
 }

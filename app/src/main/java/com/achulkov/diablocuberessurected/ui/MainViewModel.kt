@@ -24,6 +24,8 @@ class MainViewModel @Inject constructor(
 
     val recipesList : MutableLiveData<List<DCubeMappedRecipe>> = MutableLiveData()
     val itemsList : MutableLiveData<List<DCubeItem>> = MutableLiveData()
+    val selectedRecipe : MutableLiveData<DCubeMappedRecipe> = MutableLiveData()
+    val selectedItem : MutableLiveData<DCubeItem> = MutableLiveData()
 
 
     init {

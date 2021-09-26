@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DiabloCubeRessurected</string>
+    <string name="app_name">DiabloCubeResurrected</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="background_fire_image_desc">Background fire image</string>
@@ -20,7 +20,7 @@
     <string name="text_stub">Test text for testing tests</string>
     <string name="chat_rooms_header">Chats</string>
     <string name="app_title">DIABLO</string>
-    <string name="app_subtitle">cube ressurected</string>
+    <string name="app_subtitle">cube resurrected</string>
     <string name="settings_title">- SETTINGS -</string>
     <string name="profile_button">Profile</string>
     <string name="about_button">About</string>
@@ -29,11 +29,19 @@
     <string name="about_app">Hello friend!\nApp is currently under development and I\'m planning to add more features soon, Please report any suggestions or bugs you found to in-app group chat \"App feedback\" or feel free to send an email to app.diablocube@yahoo.com
     \n\nApp was intended to be just a nice representation of cube recipes and not an overall diablo database resource, but it can be added later if there will be any API with all data.
     \n\nCurrent development plan includes:
+    \n-improve current cube view (recipe filters, add recipe inputs instead of list selection, etc.)
     \n-add runewords
     \n-add localization(probably ru first)
-    \n-improve current cube view
-    \n\nRemember, you are welcome here! There will be a minimum ads possible(currently one banner at settings page)
+    \n\nRemember, you are welcome here! There will be a minimum ads possible(currently one banner at settings page, that should not affect app experience)
     \n\n Also, I can recommend some great Diablo II info websites:
     \n diablo2.io
-    \n metadiablo.com</string>
+    \n metadiablo.com
+    \n\n\nAll used images and item text are copyright of Blizzard Entertainment.</string>
+    <string name="select_recipe_button">Select recipe from a list</string>
+    <string name="result_image">Item result image</string>
+    <string name="count_stub">x 1</string>
+    <string name="count_text">x %1$s</string>
+    <string name="item_info">- Item info -</string>
+    <string name="stats_title">Stats:</string>
+    <string name="used_in_recipes">Can be used to create:</string>
 </resources>

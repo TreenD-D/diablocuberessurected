@@ -38,4 +38,9 @@
         android:name="com.achulkov.diablocuberessurected.ui.fragments.settings.AboutAppFragment"
         android:label="fragment_about_app"
         tools:layout="@layout/fragment_about_app" />
+    <fragment
+        android:id="@+id/singleItemFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.cube.SingleItemFragment"
+        android:label="fragment_single_item"
+        tools:layout="@layout/fragment_single_item" />
 </navigation>
