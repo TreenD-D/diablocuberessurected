@@ -4,6 +4,7 @@ import android.content.Intent
 import android.os.Bundle
 import androidx.activity.viewModels
 import androidx.appcompat.app.AppCompatActivity
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import androidx.preference.PreferenceManager
@@ -29,6 +30,10 @@ class DCMainActivity : AppCompatActivity() {
         val sharedPreferences =  PreferenceManager.getDefaultSharedPreferences(this)
 
         super.onCreate(savedInstanceState)
+
+        // Handle the splash screen transition.
+        val splashScreen = installSplashScreen()
+
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
 

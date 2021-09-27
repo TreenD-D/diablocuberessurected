@@ -13,7 +13,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.DiabloCubeRessurected"
+        android:theme="@style/Theme.App.Starting"
         tools:replace="android:allowBackup"
         >
         <meta-data
@@ -31,10 +31,10 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ui.chat.DCChatActivity"></activity>
+        <activity android:name=".ui.chat.DCChatActivity" />
         <activity
             android:name=".ui.onboarding.OnboardingActivity"
-            android:exported="true"></activity>
+            android:exported="true" />
     </application>
 
 </manifest>
