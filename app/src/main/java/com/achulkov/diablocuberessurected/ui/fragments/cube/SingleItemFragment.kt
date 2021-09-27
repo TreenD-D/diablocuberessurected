@@ -57,7 +57,7 @@ class SingleItemFragment : Fragment() {
             if(it.image.isNotEmpty())
                 imageLoader
                     .load(storage.getReferenceFromUrl(it.image))
-                    .centerCrop()
+                    .centerInside()
                     .into(binding.itemImage)
             var stats = ""
             for(stat in it.stats) stats = stats + stat +"\n"

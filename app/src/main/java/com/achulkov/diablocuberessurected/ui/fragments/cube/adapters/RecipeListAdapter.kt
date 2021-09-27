@@ -54,7 +54,7 @@ class RecipeListAdapter @Inject constructor(
         if(!recipe.output.image.isNullOrEmpty())
         imageLoader
             .load(storage.getReferenceFromUrl(recipe.output.image))
-            .centerCrop()
+            .centerInside()
             .into(holder.binding.icon)
 
     }

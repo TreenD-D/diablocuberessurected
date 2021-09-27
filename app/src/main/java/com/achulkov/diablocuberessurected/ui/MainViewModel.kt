@@ -38,7 +38,7 @@ class MainViewModel @Inject constructor(
      * get all items from DB and triggers recipes list mapping
      */
     private fun getItemsList() {
-        disposables.add(RxFirebaseDatabase.observeSingleValueEvent(dataRepo.getFirebaseDbReference().child("items"))
+        disposables.add(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("items"))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({dataSnap ->
@@ -62,7 +62,7 @@ class MainViewModel @Inject constructor(
      * @param items list af all items
      */
     private fun getRecipesList(items: List<DCubeItem>) {
-        disposables.add(RxFirebaseDatabase.observeSingleValueEvent(dataRepo.getFirebaseDbReference().child("recipes"))
+        disposables.add(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("recipes"))
             .map { dataSnap ->
                 val list : MutableList<DCubeMappedRecipe> = mutableListOf()
                 dataSnap.children.forEach {

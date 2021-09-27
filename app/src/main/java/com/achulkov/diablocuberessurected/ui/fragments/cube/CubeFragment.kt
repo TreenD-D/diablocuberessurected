@@ -80,7 +80,7 @@ class CubeFragment : Fragment(), ItemListAdapter.AdapterItemClickListener {
             if(recipe.output.image.isNotEmpty())
                 imageLoader
                     .load(storage.getReferenceFromUrl(recipe.output.image))
-                    .centerCrop()
+                    .centerInside()
                     .into(binding.itemResultImage)
             else binding.itemResultImage.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.convert_icon, null))
         })

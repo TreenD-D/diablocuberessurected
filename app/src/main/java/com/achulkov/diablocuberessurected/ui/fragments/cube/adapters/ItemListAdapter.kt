@@ -56,7 +56,7 @@ class ItemListAdapter @Inject constructor(
         if(input.item.image.isNotEmpty())
             imageLoader
                 .load(storage.getReferenceFromUrl(input.item.image))
-                .centerCrop()
+                .centerInside()
                 .into(holder.binding.icon)
 
     }
