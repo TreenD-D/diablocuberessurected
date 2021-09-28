@@ -60,7 +60,8 @@
     <style name="ThemeOverlay.App.BottomNavigationView" parent="">
         <item name="colorPrimary">@color/red</item>
         <item name="colorOnPrimary">@color/orange</item>
-        <item name="colorSurface">@color/grey</item>
+        <item name="colorSurface">@color/gold_yellow</item>
+        <item name="colorOnSurface">@color/orange</item>
     </style>
 
     <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
