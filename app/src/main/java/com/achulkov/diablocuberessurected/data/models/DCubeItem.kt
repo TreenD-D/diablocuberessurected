@@ -9,5 +9,6 @@ data class DCubeItem(
     var resultOf: List<String> = listOf(),
     var itemdesc: String = "",
     var itemname: String = "",
-    var stats: List<String> = listOf()
+    var stats: List<String> = listOf(),
+    var variants: List<String> = listOf()
 )

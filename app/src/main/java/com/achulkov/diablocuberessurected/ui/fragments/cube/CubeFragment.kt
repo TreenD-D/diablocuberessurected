@@ -1,5 +1,6 @@
 package com.achulkov.diablocuberessurected.ui.fragments.cube
 
+import android.os.Build
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -8,18 +9,25 @@ import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
+import androidx.navigation.navArgument
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.achulkov.diablocuberessurected.R
+import com.achulkov.diablocuberessurected.data.models.DCubeItem
 import com.achulkov.diablocuberessurected.data.models.DCubeMappedInput
+import com.achulkov.diablocuberessurected.data.models.DCubeRuneword
 import com.achulkov.diablocuberessurected.databinding.FragmentCubeBinding
 import com.achulkov.diablocuberessurected.ui.MainViewModel
 import com.achulkov.diablocuberessurected.ui.fragments.cube.adapters.ItemListAdapter
 import com.achulkov.diablocuberessurected.util.ImageLoader
 import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
 import dagger.hilt.android.AndroidEntryPoint
 import timber.log.Timber
+import java.io.File
+
 import javax.inject.Inject
 
 @AndroidEntryPoint

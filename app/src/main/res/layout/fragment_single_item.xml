@@ -32,6 +32,7 @@
         android:contentDescription="@string/result_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@drawable/convert_icon"
         app:layout_constraintTop_toBottomOf="@id/item_info_title" />
 
     <TextView
@@ -104,19 +105,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/stats" />
-
-    <TextView
-        android:id="@+id/used_in"
+    <androidx.core.widget.NestedScrollView
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="start|top"
-        android:textAppearance="@style/AppSubTitleStyle"
-        android:textColor="@color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/recipes_title"
-        tools:text="@string/app_subtitle" />
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="20dp"
+        app:layout_constraintTop_toBottomOf="@id/recipes_title">
+        <TextView
+            android:id="@+id/used_in"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="start|top"
+            android:textAppearance="@style/AppSubTitleStyle"
+            android:textColor="@color/white"
+
+            tools:text="@string/app_subtitle" />
+    </androidx.core.widget.NestedScrollView>
 </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.core.widget.NestedScrollView>

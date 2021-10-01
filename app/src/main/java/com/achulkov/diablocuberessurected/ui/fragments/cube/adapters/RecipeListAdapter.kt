@@ -4,9 +4,11 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.view.LayoutInflater
 import android.view.ViewGroup
+import androidx.core.content.res.ResourcesCompat
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.data.models.DCubeMappedRecipe
 import com.achulkov.diablocuberessurected.databinding.ListRecipeItemBinding
 import com.achulkov.diablocuberessurected.util.ImageLoader
@@ -50,6 +52,8 @@ class RecipeListAdapter @Inject constructor(
 
         holder.binding.title.text = recipe.name
         holder.binding.subtitle.text = recipe.output.itemdesc
+        holder.binding.icon.setImageDrawable(ResourcesCompat.getDrawable(holder.itemView.resources, R.drawable.convert_icon, null))
+
 
         if(!recipe.output.image.isNullOrEmpty())
         imageLoader
