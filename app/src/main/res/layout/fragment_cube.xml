@@ -98,6 +98,20 @@
         app:layout_constraintTop_toBottomOf="@id/app_name_subtitle"
         app:rippleColor="@color/red" />
 
+    <TextView
+        android:id="@+id/recipe_name_title"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="20dp"
+        android:gravity="center_horizontal|top"
+        tools:text="@string/app_title"
+        android:textAppearance="@style/ItemTitleStyle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_cube_background" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recycler_inputs_list"
         android:layout_width="match_parent"
@@ -108,7 +122,7 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/item_result_image"
+        app:layout_constraintTop_toBottomOf="@id/recipe_name_title"
         tools:listitem="@layout/list_recipe_item"
         tools:orientation="vertical" />
 </androidx.constraintlayout.widget.ConstraintLayout>

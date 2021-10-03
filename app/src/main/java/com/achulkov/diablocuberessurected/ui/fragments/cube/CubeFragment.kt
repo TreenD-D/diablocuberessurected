@@ -85,6 +85,8 @@ class CubeFragment : Fragment(), ItemListAdapter.AdapterItemClickListener {
                 viewModel.selectedItem.value = recipe.output
                 requireActivity().findNavController(R.id.main_host).navigate(R.id.singleItemFragment)
             }
+            binding.recipeNameTitle.text = recipe.name
+            gradientSetter.setTextViewGradient(binding.recipeNameTitle)
             if(recipe.output.image.isNotEmpty())
                 imageLoader
                     .load(storage.getReferenceFromUrl(recipe.output.image))

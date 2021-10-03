@@ -4,11 +4,15 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.achulkov.diablocuberessurected.data.DCubeDataRepo
 import com.achulkov.diablocuberessurected.data.models.*
+import com.google.firebase.database.DataSnapshot
 import dagger.hilt.android.lifecycle.HiltViewModel
 import durdinapps.rxfirebase2.RxFirebaseDatabase
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.CompositeDisposable
-import io.reactivex.schedulers.Schedulers
+import hu.akarnokd.rxjava3.bridge.RxJavaBridge
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.kotlin.Flowables
+import io.reactivex.rxjava3.kotlin.Observables
+import io.reactivex.rxjava3.schedulers.Schedulers
 import timber.log.Timber
 import javax.inject.Inject
 
@@ -27,26 +31,38 @@ class MainViewModel @Inject constructor(
 
 
     init {
-        getBaseItemsList()
+        getItemsList()
         getRunewordsList()
 
     }
 
 
     /**
-     * get all items from DB and triggers recipes list mapping
+     * get all items(misc and base) from DB and triggers recipes list mapping
      */
     private fun getItemsList() {
-        disposables.add(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("items_parsed"))
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({dataSnap ->
-                val list : MutableList<DCubeItem> = mutableListOf()
-                dataSnap.children.forEach {
+        disposables.add(
+            Flowables.combineLatest(
+                RxJavaBridge.toV3Flowable(
+                    RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("items_parsed"))),
+                RxJavaBridge.toV3Flowable(
+                    RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("items_parsed_base")))
+            ) { snap1, snap2 ->
+                val list: MutableList<DCubeItem> = mutableListOf()
+                snap1.children.forEach {
                     val singleItem = it.getValue(DCubeItem::class.java)
                     singleItem?.let { it1 -> list.add(it1) }
                 }
-                itemsList.value?.let { list.addAll(it) }
+                snap2.children.forEach {
+                    val singleItem = it.getValue(DCubeItem::class.java)
+                    singleItem?.let { it1 -> list.add(it1) }
+                }
+                list
+            }
+                .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({list ->
+
                 itemsList.postValue(list)
                 getRecipesList(items = list)
 
@@ -60,7 +76,7 @@ class MainViewModel @Inject constructor(
      * get all runewords from DB
      */
     private fun getRunewordsList() {
-        disposables.add(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("runewords_parsed"))
+        disposables.add(RxJavaBridge.toV3Flowable(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("runewords_parsed")))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({dataSnap ->
@@ -81,7 +97,8 @@ class MainViewModel @Inject constructor(
      * get all base items from DB and triggers misc items db call
      */
     private fun getBaseItemsList() {
-        disposables.add(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("items_parsed_base"))
+        disposables.add(RxJavaBridge.toV3Flowable(
+            RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("items_parsed_base")))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({dataSnap ->
@@ -105,7 +122,8 @@ class MainViewModel @Inject constructor(
      * @param items list af all items
      */
     private fun getRecipesList(items: List<DCubeItem>) {
-        disposables.add(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("recipes_parsed"))
+        disposables.add(RxJavaBridge.toV3Flowable(
+            RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("recipes_parsed")))
             .map { dataSnap ->
                 val list : MutableList<DCubeMappedRecipe> = mutableListOf()
                 dataSnap.children.forEach {
@@ -123,7 +141,9 @@ class MainViewModel @Inject constructor(
                                 }
                             }
                         }
-                        list.add(DCubeMappedRecipe(recipe.name, inputs, output))
+                        //used for data consistency debugging
+                        if(inputs.size != recipe.inputs.size) list.add(DCubeMappedRecipe("ZZ" + recipe.name, inputs, output))
+                        else list.add(DCubeMappedRecipe(recipe.name, inputs, output))
                     }
                 }
                 list
