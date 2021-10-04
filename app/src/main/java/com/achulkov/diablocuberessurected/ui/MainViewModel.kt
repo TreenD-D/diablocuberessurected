@@ -24,6 +24,7 @@ class MainViewModel @Inject constructor(
     private val disposables : CompositeDisposable = CompositeDisposable()
 
     val recipesList : MutableLiveData<List<DCubeMappedRecipe>> = MutableLiveData()
+    val filteredRecipesList : MutableLiveData<List<DCubeMappedRecipe>> = MutableLiveData()
     val itemsList : MutableLiveData<List<DCubeItem>> = MutableLiveData()
     val runeWords : MutableLiveData<List<DCubeRuneword>> = MutableLiveData()
     val selectedRecipe : MutableLiveData<DCubeMappedRecipe> = MutableLiveData()
@@ -93,28 +94,7 @@ class MainViewModel @Inject constructor(
 
     }
 
-    /**
-     * get all base items from DB and triggers misc items db call
-     */
-    private fun getBaseItemsList() {
-        disposables.add(RxJavaBridge.toV3Flowable(
-            RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("items_parsed_base")))
-            .observeOn(Schedulers.io())
-            .subscribeOn(AndroidSchedulers.mainThread())
-            .subscribe({dataSnap ->
-                val list : MutableList<DCubeItem> = mutableListOf()
-                dataSnap.children.forEach {
-                    val singleItem = it.getValue(DCubeItem::class.java)
-                    singleItem?.let { it1 -> list.add(it1) }
-                }
-                itemsList.postValue(list)
-                getItemsList()
 
-            })
-            {throwable -> Timber.e(throwable)}
-        )
-
-    }
 
     /**
      * gets all recipes from DB and maps them to DCubeMappedItems using items
@@ -160,6 +140,10 @@ class MainViewModel @Inject constructor(
     }
 
 
+
+    fun filterRecipes(filter : String){
+        filteredRecipesList.postValue(recipesList.value?.filter { it.name.contains(filter, true) })
+    }
 
 
     override fun onCleared() {

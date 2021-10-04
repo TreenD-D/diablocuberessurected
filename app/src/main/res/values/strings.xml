@@ -41,4 +41,6 @@
     <string name="item_info">- Item info -</string>
     <string name="stats_title">Stats:</string>
     <string name="used_in_recipes">Can be used to create:</string>
+    <string name="search_icon_description">Search recipes</string>
+    <string name="search_tooltip">Search by name</string>
 </resources>

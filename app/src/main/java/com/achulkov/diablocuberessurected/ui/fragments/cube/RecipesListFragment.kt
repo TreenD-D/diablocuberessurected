@@ -14,7 +14,13 @@ import com.achulkov.diablocuberessurected.data.models.DCubeMappedRecipe
 import com.achulkov.diablocuberessurected.databinding.FragmentRecipesListBinding
 import com.achulkov.diablocuberessurected.ui.MainViewModel
 import com.achulkov.diablocuberessurected.ui.fragments.cube.adapters.RecipeListAdapter
+import com.jakewharton.rxbinding4.widget.textChanges
 import dagger.hilt.android.AndroidEntryPoint
+import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
+import io.reactivex.rxjava3.disposables.CompositeDisposable
+import io.reactivex.rxjava3.kotlin.addTo
+import io.reactivex.rxjava3.schedulers.Schedulers
+import java.util.concurrent.TimeUnit
 import javax.inject.Inject
 
 @AndroidEntryPoint
@@ -23,6 +29,7 @@ class RecipesListFragment : Fragment(), RecipeListAdapter.AdapterItemClickListen
     @Inject
     lateinit var adapter: RecipeListAdapter
 
+    private val disposable : CompositeDisposable = CompositeDisposable()
     private lateinit var binding: FragmentRecipesListBinding
     private val viewModel : MainViewModel by activityViewModels()
 
@@ -50,15 +57,29 @@ class RecipesListFragment : Fragment(), RecipeListAdapter.AdapterItemClickListen
         adapter.setListener(this)
         binding.recyclerRecipesList.setHasFixedSize(true)
 
-        viewModel.recipesList.observe(viewLifecycleOwner, {
+        viewModel.filteredRecipesList.observe(viewLifecycleOwner, {
             adapter.submitList(it)
             binding.recipesCounterText.text = String.format(resources.getString(R.string.search_results_counter), it.size)
         })
 
+        binding.recipesSearchEdittext.textChanges()
+            .debounce(500, TimeUnit.MILLISECONDS)
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe{
+                viewModel.filterRecipes(it.toString())
+            }
+            .addTo(disposable)
 
 
 
 
+
+    }
+
+    override fun onDestroyView() {
+        disposable.dispose()
+        super.onDestroyView()
     }
 
     override fun onAdapterItemClick(recipe: DCubeMappedRecipe) {

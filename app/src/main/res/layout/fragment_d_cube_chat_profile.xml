@@ -197,10 +197,9 @@
             android:id="@+id/avatarImageView"
             android:layout_width="150dp"
             android:layout_height="150dp"
-            app:civ_border_width="5dp"
-            app:civ_circle_background_color="?avatarBackgroundColor"
             app:civ_border_color="?avatarBorderColor"
-            />
+            app:civ_border_width="5dp"
+            app:civ_circle_background_color="?avatarBackgroundColor" />
 
         <View
             android:id="@+id/onlineIndicator"
