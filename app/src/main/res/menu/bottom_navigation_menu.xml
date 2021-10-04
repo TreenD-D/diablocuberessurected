@@ -6,6 +6,12 @@
         android:icon="@drawable/ic_cube"
         android:title="@string/cube_bottomnav"/>
     <item
+        android:id="@+id/runeWordsFragment"
+        android:enabled="true"
+        android:icon="@drawable/runepul_graphic"
+        android:title="@string/rune_words"
+        />
+    <item
         android:id="@+id/community_page"
         android:enabled="true"
         android:icon="@drawable/ic_messages"

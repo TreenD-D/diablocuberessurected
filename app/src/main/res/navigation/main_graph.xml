@@ -43,4 +43,9 @@
         android:name="com.achulkov.diablocuberessurected.ui.fragments.cube.SingleItemFragment"
         android:label="fragment_single_item"
         tools:layout="@layout/fragment_single_item" />
+    <fragment
+        android:id="@+id/runeWordsFragment"
+        android:name="com.achulkov.diablocuberessurected.ui.fragments.runewords.RuneWordsFragment"
+        android:label="fragment_rune_words"
+        tools:layout="@layout/fragment_rune_words" />
 </navigation>

@@ -26,20 +26,18 @@ class MainViewModel @Inject constructor(
     val recipesList : MutableLiveData<List<DCubeMappedRecipe>> = MutableLiveData()
     val filteredRecipesList : MutableLiveData<List<DCubeMappedRecipe>> = MutableLiveData()
     val itemsList : MutableLiveData<List<DCubeItem>> = MutableLiveData()
-    val runeWords : MutableLiveData<List<DCubeRuneword>> = MutableLiveData()
+    val runeWords : MutableLiveData<List<DCubeMappedRuneword>> = MutableLiveData()
     val selectedRecipe : MutableLiveData<DCubeMappedRecipe> = MutableLiveData()
     val selectedItem : MutableLiveData<DCubeItem> = MutableLiveData()
 
 
     init {
         getItemsList()
-        getRunewordsList()
-
     }
 
 
     /**
-     * get all items(misc and base) from DB and triggers recipes list mapping
+     * get all items(misc and base) from DB and triggers recipes and runewords lists mapping
      */
     private fun getItemsList() {
         disposables.add(
@@ -66,6 +64,7 @@ class MainViewModel @Inject constructor(
 
                 itemsList.postValue(list)
                 getRecipesList(items = list)
+                getRunewordsList(items = list)
 
             })
             {throwable -> Timber.e(throwable)}
@@ -76,15 +75,23 @@ class MainViewModel @Inject constructor(
     /**
      * get all runewords from DB
      */
-    private fun getRunewordsList() {
+    private fun getRunewordsList(items: List<DCubeItem>) {
         disposables.add(RxJavaBridge.toV3Flowable(RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("runewords_parsed")))
             .observeOn(Schedulers.io())
             .subscribeOn(AndroidSchedulers.mainThread())
             .subscribe({dataSnap ->
-                val list : MutableList<DCubeRuneword> = mutableListOf()
+                val list : MutableList<DCubeMappedRuneword> = mutableListOf()
                 dataSnap.children.forEach {
                     val singleItem = it.getValue(DCubeRuneword::class.java)
-                    singleItem?.let { it1 -> list.add(it1) }
+                    singleItem?.let { it1 ->
+                        val inputs = mutableListOf<DCubeItem>()
+                        for(input in it1.inputs){
+                            for(item in items) {
+                                if(input == item.itemname)
+                                    inputs.add(item)
+                            }
+                        }
+                        list.add(DCubeMappedRuneword(it1.name,inputs,it1.levelRequirement,it1.inputBaseItem, it1.stats)) }
                 }
                 runeWords.postValue(list)
 
