@@ -43,4 +43,5 @@
     <string name="used_in_recipes">Can be used to create:</string>
     <string name="search_icon_description">Search recipes</string>
     <string name="search_tooltip">Search by name</string>
+    <string name="support_button">Support - watch an Ad</string>
 </resources>
