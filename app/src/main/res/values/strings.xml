@@ -27,14 +27,17 @@
     <string name="about_button">About</string>
     <string name="need_to_login">To be able to edit your profile, you need to log in to chats first.</string>
     <string name="dismiss_snack">Dismiss</string>
-    <string name="about_app">Hello friend!\nApp is currently under development and I\'m planning to add more features soon, Please report any suggestions or bugs you found to in-app group chat \"App feedback\" or feel free to send an email to app.diablocube@yahoo.com
+    <string name="about_app">Hello friend!\nPlease report any suggestions or bugs you found to in-app group chat \"App feedback\" or feel free to send an email to app.diablocube@yahoo.com
     \n\nApp was intended to be just a nice representation of cube recipes and not an overall diablo database resource, but it can be added later if there will be any API with all data.
-    \n\nCurrent development plan includes:
+    \n\nCurrent development plan can include:
     \n-improve current cube view (recipe filters, add recipe inputs instead of list selection, etc.)
     \n-add runewords
     \n-add localization(probably ru first)
-    \n\nRemember, you are welcome here! There will be a minimum ads possible(currently one banner at settings page, that should not affect app experience)
-    \n\n\nAll used images and item text are copyright of Blizzard Entertainment.</string>
+    \n-etc
+    \n\nRemember, you are welcome here! There will be a minimum ads possible(currently one banner and support ad at settings page, that should not affect app experience)
+    \n\n\nAll used images and item text are copyright of Blizzard Entertainment.
+    \n\n\n\nPrivacy policy
+    \nhttps://www.termsfeed.com/live/6a05b0ec-bf63-4ec1-b4e8-3e4e07d5b9a4</string>
     <string name="select_recipe_button">Select recipe from a list</string>
     <string name="result_image">Item result image</string>
     <string name="count_stub">x 1</string>
@@ -50,4 +53,5 @@
     <string name="text_short_stub">short testing test</string>
     <string name="rune_stub">El</string>
     <string name="search_runes_tooltip">name, input type…</string>
+    <string name="used_with">Can be used with:</string>
 </resources>

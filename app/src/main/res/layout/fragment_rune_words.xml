@@ -12,32 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-    <TextView
-        android:id="@+id/app_name_title"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center_horizontal|top"
-        android:text="@string/app_title"
-        android:textAppearance="@style/WelcomeTitleStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
-
-    <TextView
-        android:id="@+id/app_name_subtitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="20dp"
-        android:layout_marginEnd="20dp"
-        android:gravity="center_horizontal|top"
-        android:textAppearance="@style/AppSubTitleStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/app_name_title"
-        android:text="@string/app_subtitle" />
 
     <ImageView
         android:id="@+id/top_fire"
@@ -59,7 +33,7 @@
             style="@style/Widget.MaterialComponents.Button.OutlinedButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="24dp"
             android:text="@string/select_runeword_button"
             android:textAppearance="@style/ButtonTextStyle"
             android:textColor="@color/orange"
@@ -69,7 +43,7 @@
             app:iconTintMode="add"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/app_name_subtitle"
+            app:layout_constraintTop_toTopOf="parent"
             app:rippleColor="@color/red" />
 
         <TextView
@@ -86,6 +60,331 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@id/select_runeword_button" />
 
+        <TextView
+            android:id="@+id/used_with_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/used_with"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/ItemSubTitleStyle"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/guideline_75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/runeword_name" />
+
+        <TextView
+            android:id="@+id/used_with"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="12dp"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/ItemSubTitleStyle"
+            app:layout_constraintEnd_toStartOf="@id/guideline_75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/used_with_title"
+            tools:text="@string/text_stub" />
+
+        <TextView
+            android:id="@+id/subtitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="12dp"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/ItemSubTitleStyle"
+            app:layout_constraintEnd_toStartOf="@id/guideline_75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/used_with"
+            tools:text="@string/text_stub" />
+
+        <TextView
+            android:id="@+id/stats_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="12dp"
+            android:text="@string/stats_title"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/ItemSubTitleStyle"
+            android:textColor="@color/white"
+            app:layout_constraintEnd_toStartOf="@id/guideline_75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/subtitle" />
+
+        <TextView
+            android:id="@+id/stats_list"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="12dp"
+            android:textAlignment="textStart"
+            android:textAppearance="@style/ItemSubTitleStyle"
+            android:textColor="@color/stats_blue"
+            app:layout_constraintEnd_toStartOf="@id/guideline_75"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/stats_title"
+            tools:text="@string/text_stub" />
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline_75"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_percent="0.75" />
+
+        <LinearLayout
+                android:id="@+id/rune_1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:src="@drawable/runepul_graphic"
+                app:layout_constraintEnd_toEndOf="parent"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/guideline_75"
+                app:layout_constraintTop_toTopOf="@id/used_with_title">
+
+                <TextView
+                    android:id="@+id/rune_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/ItemSubTitleStyle"
+                    android:textColor="@color/white"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                    tools:text="@string/rune_stub" />
+                <ImageView
+                            android:id="@+id/rune_1_img"
+                            android:layout_width="50dp"
+                            android:layout_height="50dp"
+                            android:src="@drawable/runepul_graphic"
+                            app:layout_constraintEnd_toEndOf="parent"
+                            app:layout_constraintTop_toBottomOf="@id/used_with" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/arrow_1_2"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                app:layout_constraintEnd_toEndOf="@id/rune_1"
+                android:visibility="gone"
+                app:layout_constraintStart_toStartOf="@id/rune_1"
+                app:layout_constraintTop_toBottomOf="@id/rune_1" />
+
+            <LinearLayout
+                android:id="@+id/rune_2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:src="@drawable/runepul_graphic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/guideline_75"
+                app:layout_constraintTop_toBottomOf="@id/arrow_1_2">
+                <TextView
+                    android:id="@+id/rune_2_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/ItemSubTitleStyle"
+                    android:textColor="@color/white"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                    tools:text="@string/rune_stub" />
+                <ImageView
+                    android:id="@+id/rune_2_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/runepul_graphic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/used_with" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/arrow_2_3"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                app:layout_constraintEnd_toEndOf="@id/rune_2"
+                app:layout_constraintStart_toStartOf="@id/rune_2"
+                app:layout_constraintTop_toBottomOf="@id/rune_2" />
+
+            <LinearLayout
+                android:id="@+id/rune_3"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:src="@drawable/runepul_graphic"
+                app:layout_constraintStart_toEndOf="@id/guideline_75"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/arrow_2_3">
+                <TextView
+                    android:id="@+id/rune_3_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/ItemSubTitleStyle"
+                    android:textColor="@color/white"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                    tools:text="@string/rune_stub" />
+                <ImageView
+                    android:id="@+id/rune_3_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/runepul_graphic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/used_with" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/arrow_3_4"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                app:layout_constraintEnd_toEndOf="@id/rune_3"
+                app:layout_constraintStart_toStartOf="@id/rune_3"
+                app:layout_constraintTop_toBottomOf="@id/rune_3" />
+            <LinearLayout
+                android:id="@+id/rune_4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:src="@drawable/runepul_graphic"
+                app:layout_constraintStart_toEndOf="@id/guideline_75"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/arrow_3_4">
+                <TextView
+                    android:id="@+id/rune_4_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/ItemSubTitleStyle"
+                    android:textColor="@color/white"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                    tools:text="@string/rune_stub" />
+                <ImageView
+                    android:id="@+id/rune_4_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/runepul_graphic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/used_with" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/arrow_4_5"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                app:layout_constraintEnd_toEndOf="@id/rune_4"
+                app:layout_constraintStart_toStartOf="@id/rune_4"
+                app:layout_constraintTop_toBottomOf="@id/rune_4" />
+
+            <LinearLayout
+                android:id="@+id/rune_5"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                android:src="@drawable/runepul_graphic"
+                app:layout_constraintStart_toEndOf="@id/guideline_75"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/arrow_4_5">
+                <TextView
+                    android:id="@+id/rune_5_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/ItemSubTitleStyle"
+                    android:textColor="@color/white"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                    tools:text="@string/rune_stub" />
+                <ImageView
+                    android:id="@+id/rune_5_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/runepul_graphic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/used_with" />
+            </LinearLayout>
+            <ImageView
+                android:id="@+id/arrow_5_6"
+                android:layout_width="50dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:visibility="gone"
+                android:src="@drawable/ic_baseline_keyboard_arrow_down_24"
+                app:layout_constraintEnd_toEndOf="@id/rune_5"
+                app:layout_constraintStart_toStartOf="@id/rune_5"
+                app:layout_constraintTop_toBottomOf="@id/rune_5" />
+            <LinearLayout
+                android:id="@+id/rune_6"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginEnd="20dp"
+                android:visibility="gone"
+                app:layout_constraintStart_toEndOf="@id/guideline_75"
+                android:src="@drawable/runepul_graphic"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/arrow_5_6">
+                <TextView
+                    android:id="@+id/rune_6_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
+                    android:textAppearance="@style/ItemSubTitleStyle"
+                    android:textColor="@color/white"
+                    android:paddingEnd="8dp"
+                    android:paddingStart="0dp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/title"
+                    app:layout_constraintTop_toBottomOf="@+id/subtitle"
+                    tools:text="@string/rune_stub" />
+                <ImageView
+                    android:id="@+id/rune_6_img"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:src="@drawable/runepul_graphic"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/used_with" />
+            </LinearLayout>
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
