@@ -14,6 +14,7 @@ import com.achulkov.diablocuberessurected.data.models.DCubeMappedRecipe
 import com.achulkov.diablocuberessurected.databinding.FragmentRecipesListBinding
 import com.achulkov.diablocuberessurected.ui.MainViewModel
 import com.achulkov.diablocuberessurected.ui.fragments.cube.adapters.RecipeListAdapter
+import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
 import com.jakewharton.rxbinding4.widget.textChanges
 import dagger.hilt.android.AndroidEntryPoint
 import io.reactivex.rxjava3.android.schedulers.AndroidSchedulers
@@ -28,6 +29,7 @@ class RecipesListFragment : Fragment(), RecipeListAdapter.AdapterItemClickListen
 
     @Inject
     lateinit var adapter: RecipeListAdapter
+
 
     private val disposable : CompositeDisposable = CompositeDisposable()
     private lateinit var binding: FragmentRecipesListBinding
@@ -63,7 +65,7 @@ class RecipesListFragment : Fragment(), RecipeListAdapter.AdapterItemClickListen
         })
 
         binding.recipesSearchEdittext.textChanges()
-            .debounce(500, TimeUnit.MILLISECONDS)
+//            .debounce(500, TimeUnit.MILLISECONDS)
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe{

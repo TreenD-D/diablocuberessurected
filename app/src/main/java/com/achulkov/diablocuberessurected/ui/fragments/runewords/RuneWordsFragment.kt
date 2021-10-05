@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.activityViewModels
+import androidx.navigation.findNavController
 import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentRuneWordsBinding
 import com.achulkov.diablocuberessurected.ui.MainViewModel
@@ -48,7 +49,13 @@ class RuneWordsFragment : Fragment() {
         gradientSetter.setTextViewGradient(binding.appNameSubtitle)
 
 
+        binding.selectRunewordButton.setOnClickListener { requireActivity().findNavController(R.id.main_host).navigate(R.id.runeWordsListFragment) }
 
+
+        viewModel.selectedRuneword.observe(viewLifecycleOwner, {
+            binding.runewordName.text = it.name
+            gradientSetter.setTextViewGradient(binding.runewordName)
+        })
 
     }
 
