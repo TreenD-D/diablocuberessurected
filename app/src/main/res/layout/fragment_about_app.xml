@@ -59,7 +59,7 @@
         android:layout_marginBottom="20dp"
         android:autoLink="web|email"
         android:gravity="start|top"
-        android:text="@string/about_app"
+        tools:text="@string/about_app"
         android:textAppearance="@style/AppSubTitleStyle"
         android:textColor="@color/white"
         android:textColorLink="@color/gold_yellow"

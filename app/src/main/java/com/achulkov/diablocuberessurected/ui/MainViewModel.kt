@@ -32,10 +32,12 @@ class MainViewModel @Inject constructor(
     val selectedRecipe : MutableLiveData<DCubeMappedRecipe> = MutableLiveData()
     val selectedItem : MutableLiveData<DCubeItem> = MutableLiveData()
     val selectedRuneword : MutableLiveData<DCubeMappedRuneword> = MutableLiveData()
+    val aboutAppText : MutableLiveData<String> = MutableLiveData()
 
 
     init {
         getItemsList()
+        getAboutAppInfo()
     }
 
 
@@ -148,6 +150,24 @@ class MainViewModel @Inject constructor(
 
     }
 
+    private fun getAboutAppInfo(){
+        disposables.add(RxJavaBridge.toV3Flowable(
+            RxFirebaseDatabase.observeValueEvent(dataRepo.getFirebaseDbReference().child("app_strings").child("about")))
+            .map { dataSnap ->
+                var text = ""
+                dataSnap.children.forEach {
+                    text  = it.value.toString()
+                    }
+                text
+            }
+            .observeOn(Schedulers.io())
+            .subscribeOn(AndroidSchedulers.mainThread())
+            .subscribe({ text ->
+                aboutAppText.postValue(text)
+
+            })
+            {throwable -> Timber.e(throwable)})
+    }
 
 
     fun filterRecipes(filter : String){

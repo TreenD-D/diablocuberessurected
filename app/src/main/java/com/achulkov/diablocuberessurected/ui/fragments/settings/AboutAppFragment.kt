@@ -6,8 +6,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.text.HtmlCompat
+import androidx.fragment.app.activityViewModels
 import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentAboutAppBinding
+import com.achulkov.diablocuberessurected.ui.MainViewModel
 import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -20,6 +22,8 @@ class AboutAppFragment : Fragment() {
     lateinit var gradientSetter : TextViewGradientSetter
 
     private lateinit var binding: FragmentAboutAppBinding
+
+    private val viewModel : MainViewModel by activityViewModels()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -41,6 +45,10 @@ class AboutAppFragment : Fragment() {
 
         gradientSetter.setTextViewGradient(binding.appNameTitle)
         gradientSetter.setTextViewGradient(binding.appNameSubtitle)
+
+        viewModel.aboutAppText.observe(viewLifecycleOwner , {
+            binding.appInfoText.text = HtmlCompat.fromHtml(it, 0)
+        })
 
     }
 
