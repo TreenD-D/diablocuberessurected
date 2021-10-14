@@ -61,7 +61,7 @@ class RecipesListFragment : Fragment(), RecipeListAdapter.AdapterItemClickListen
 
         viewModel.filteredRecipesList.observe(viewLifecycleOwner, {
             adapter.submitList(it)
-            binding.recipesCounterText.text = String.format(resources.getString(R.string.search_results_counter), it.size)
+            binding.recipesCounterText.text = String.format(resources.getString(R.string.search_results_counter), it?.size)
         })
 
         binding.recipesSearchEdittext.textChanges()

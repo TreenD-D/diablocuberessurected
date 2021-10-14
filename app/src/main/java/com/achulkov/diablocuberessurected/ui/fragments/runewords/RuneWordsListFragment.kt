@@ -60,7 +60,7 @@ class RuneWordsListFragment : Fragment(), RuneWordListAdapter.AdapterItemClickLi
 
         viewModel.filteredRuneWords.observe(viewLifecycleOwner, {
             adapter.submitList(it)
-            binding.recipesCounterText.text = String.format(resources.getString(R.string.search_runewords_results_counter), it.size)
+            binding.recipesCounterText.text = String.format(resources.getString(R.string.search_runewords_results_counter), it?.size)
         })
 
         binding.recipesSearchEdittext.textChanges()
