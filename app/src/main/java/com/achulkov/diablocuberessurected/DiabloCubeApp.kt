@@ -97,6 +97,8 @@ class DiabloCubeApp : MultiDexApplication() {
         ChatSDK.ui().setPublicThreadsFragment(DCubePublicThreadsFragment())
         ChatSDKUI.setPrivateThreadsFragment(DCubePrivateThreadsFragment())
         ChatSDK.ui().setPrivateThreadsFragment(DCubePrivateThreadsFragment())
+        ChatSDKUI.setLoginActivity(DCubeChatLoginActivity::class.java)
+        ChatSDK.ui().setLoginActivity(DCubeChatLoginActivity::class.java)
         UIModule.config().profileHeaderImage = R.drawable.profile_bcg
         UIModule.config().customizeGroupImageEnabled = false
         UIModule.config().showAvatarInChatView = true

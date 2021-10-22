@@ -14,18 +14,22 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.DiabloCubeRessurected"
-        tools:replace="android:allowBackup"
-        >
+        tools:replace="android:allowBackup">
+        <activity
+            android:name=".ui.chat.DCubeChatLoginActivity"
+            android:exported="true" />
+
         <meta-data
             android:name="com.google.android.gms.ads.APPLICATION_ID"
-            android:value="ca-app-pub-3489954973980283~5927422679"/>
+            android:value="ca-app-pub-3489954973980283~5927422679" />
+
         <activity
             android:name=".ui.chat.DCubeChatProfileActivity"
             android:exported="true" />
         <activity
             android:name=".ui.DCMainActivity"
-            android:theme="@style/Theme.App.Starting"
-            android:exported="true">
+            android:exported="true"
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
