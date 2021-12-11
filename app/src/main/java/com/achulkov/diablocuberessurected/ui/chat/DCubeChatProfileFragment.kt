@@ -11,11 +11,6 @@ import sdk.chat.ui.fragments.ProfileFragment
 
 class DCubeChatProfileFragment : ProfileFragment() {
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
 
     override fun getLayout(): Int {
         return R.layout.fragment_d_cube_chat_profile

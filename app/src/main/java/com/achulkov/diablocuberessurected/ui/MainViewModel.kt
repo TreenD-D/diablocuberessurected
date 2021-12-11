@@ -34,6 +34,9 @@ class MainViewModel @Inject constructor(
     val selectedRuneword : MutableLiveData<DCubeMappedRuneword> = MutableLiveData()
     val aboutAppText : MutableLiveData<String> = MutableLiveData()
 
+    val isReviewTriggerable : MutableLiveData<Boolean> = MutableLiveData(false)
+    val userActionsCounter : MutableLiveData<Int> = MutableLiveData(0)
+
 
     init {
         getItemsList()
@@ -172,11 +175,13 @@ class MainViewModel @Inject constructor(
 
     fun filterRecipes(filter : String){
         filteredRecipesList.postValue(recipesList.value?.filter { it.name.contains(filter, true) })
+        userActionsCounter.value?.plus(1)
     }
 
     fun filterRunewords(filter : String){
         filteredRuneWords.postValue(runeWords.value?.filter { it.name.contains(filter, true) ||
                 it.inputBaseItem.contains(filter, true)})
+        userActionsCounter.value?.plus(1)
     }
 
 

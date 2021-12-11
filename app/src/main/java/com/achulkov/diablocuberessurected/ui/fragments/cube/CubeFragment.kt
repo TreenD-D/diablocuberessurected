@@ -46,11 +46,6 @@ class CubeFragment : Fragment(), ItemListAdapter.AdapterItemClickListener {
 
     private val viewModel : MainViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -69,6 +64,7 @@ class CubeFragment : Fragment(), ItemListAdapter.AdapterItemClickListener {
 
         binding.selectRecipeButton.setOnClickListener {
             requireActivity().findNavController(R.id.main_host).navigate(R.id.recipesListFragment)
+            viewModel.userActionsCounter.value = viewModel.userActionsCounter.value?.plus(1)
         }
 
         val layoutManager =
@@ -100,6 +96,7 @@ class CubeFragment : Fragment(), ItemListAdapter.AdapterItemClickListener {
 
     override fun onAdapterItemClick(item: DCubeMappedInput) {
         viewModel.selectedItem.value = item.item
+        viewModel.userActionsCounter.value =  viewModel.userActionsCounter.value?.plus(1)
         requireActivity().findNavController(R.id.main_host).navigate(R.id.singleItemFragment)
     }
 

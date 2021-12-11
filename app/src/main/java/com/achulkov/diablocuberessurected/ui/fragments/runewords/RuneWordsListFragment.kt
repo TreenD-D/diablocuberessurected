@@ -27,17 +27,12 @@ class RuneWordsListFragment : Fragment(), RuneWordListAdapter.AdapterItemClickLi
 
     private lateinit var binding: FragmentRuneWordsListBinding
 
-    private val viewModel : MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
 
     @Inject
     lateinit var adapter: RuneWordListAdapter
 
     private val disposable = CompositeDisposable()
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -60,13 +55,16 @@ class RuneWordsListFragment : Fragment(), RuneWordListAdapter.AdapterItemClickLi
 
         viewModel.filteredRuneWords.observe(viewLifecycleOwner, {
             adapter.submitList(it)
-            binding.recipesCounterText.text = String.format(resources.getString(R.string.search_runewords_results_counter), it?.size)
+            binding.recipesCounterText.text = String.format(
+                resources.getString(R.string.search_runewords_results_counter),
+                it?.size
+            )
         })
 
         binding.recipesSearchEdittext.textChanges()
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .subscribe{
+            .subscribe {
                 viewModel.filterRunewords(it.toString())
             }
             .addTo(disposable)
@@ -79,6 +77,7 @@ class RuneWordsListFragment : Fragment(), RuneWordListAdapter.AdapterItemClickLi
     }
 
     override fun onAdapterItemClick(runeword: DCubeMappedRuneword) {
+        viewModel.userActionsCounter.value = viewModel.userActionsCounter.value?.plus(1)
         viewModel.selectedRuneword.value = runeword
         requireActivity().findNavController(R.id.main_host).navigateUp()
     }

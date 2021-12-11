@@ -1,5 +1,3 @@
 package com.achulkov.diablocuberessurected.data
 
-interface MetaDiabloApi {
-
-}
+interface MetaDiabloApi

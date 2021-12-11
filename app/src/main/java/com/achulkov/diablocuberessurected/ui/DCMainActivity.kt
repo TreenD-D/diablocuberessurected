@@ -15,6 +15,8 @@ import com.achulkov.diablocuberessurected.ui.onboarding.OnboardingActivity.Compa
 import com.google.android.play.core.appupdate.AppUpdateManagerFactory
 import com.google.android.play.core.install.model.AppUpdateType
 import com.google.android.play.core.install.model.UpdateAvailability
+import com.google.android.play.core.review.ReviewManagerFactory
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import com.miguelcatalan.materialsearchview.MaterialSearchView
 import dagger.hilt.android.AndroidEntryPoint
 import sdk.chat.ui.activities.MainActivity
@@ -53,11 +55,6 @@ class DCMainActivity : AppCompatActivity() {
         binding.bottomNavigation.setupWithNavController(navController)
 
 
-        viewModel.recipesList.observe(this ,{
-            val recipes = it
-            Timber.d("woooot a great liist")
-        })
-
         val appUpdateManager = AppUpdateManagerFactory.create(this)
         // Returns an intent object that you use to check for an update.
         val appUpdateInfoTask = appUpdateManager.appUpdateInfo
@@ -83,5 +80,29 @@ class DCMainActivity : AppCompatActivity() {
             }
         }
 
+        viewModel.userActionsCounter.observe(this, {
+            if(it > 5) {
+                viewModel.isReviewTriggerable.postValue(true)
+                viewModel.userActionsCounter.postValue(0)
+            }
+        })
+
+        val manager = ReviewManagerFactory.create(this)
+        viewModel.isReviewTriggerable.observe(this, {
+            if(it){
+                viewModel.isReviewTriggerable.value = false
+                val request = manager.requestReviewFlow()
+                request.addOnCompleteListener { task ->
+                    if (task.isSuccessful) {
+                        // We got the ReviewInfo object
+                        val reviewInfo = task.result
+                        val flow = manager.launchReviewFlow(this, reviewInfo)
+                    } else {
+                        // There was some problem, log or handle the error code.
+                        FirebaseCrashlytics.getInstance().log("error creating review request")
+                    }
+                }
+            }
+        })
     }
 }

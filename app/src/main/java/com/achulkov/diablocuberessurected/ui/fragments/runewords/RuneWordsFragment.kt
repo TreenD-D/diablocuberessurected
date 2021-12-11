@@ -24,20 +24,17 @@ class RuneWordsFragment : Fragment() {
 
     private lateinit var binding: FragmentRuneWordsBinding
 
-    private val viewModel : MainViewModel by activityViewModels()
+    private val viewModel: MainViewModel by activityViewModels()
 
     @Inject
-    lateinit var gradientSetter : TextViewGradientSetter
+    lateinit var gradientSetter: TextViewGradientSetter
+
     @Inject
-    lateinit var imageLoader : ImageLoader
+    lateinit var imageLoader: ImageLoader
+
     @Inject
     lateinit var storage: FirebaseStorage
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -52,7 +49,10 @@ class RuneWordsFragment : Fragment() {
         binding = FragmentRuneWordsBinding.bind(view)
         gradientSetter.setTextViewGradient(binding.runewordName)
 
-        binding.selectRunewordButton.setOnClickListener { requireActivity().findNavController(R.id.main_host).navigate(R.id.runeWordsListFragment) }
+        binding.selectRunewordButton.setOnClickListener {
+            requireActivity().findNavController(R.id.main_host).navigate(R.id.runeWordsListFragment)
+            viewModel.userActionsCounter.value = viewModel.userActionsCounter.value?.plus(1)
+        }
 
         binding.statsTitle.visibility = View.GONE
         binding.usedWithTitle.visibility = View.GONE
@@ -69,16 +69,16 @@ class RuneWordsFragment : Fragment() {
             binding.usedWithTitle.visibility = View.VISIBLE
 
             var stats = ""
-            for(stat in it.stats) stats = stats + stat +"\n"
+            for (stat in it.stats) stats = stats + stat + "\n"
             binding.statsList.text = stats
 
-            for((i, rune) in it.inputs.withIndex()){
+            for ((i, rune) in it.inputs.withIndex()) {
                 var imageView: ImageView
                 var runeTitle: TextView
                 var runeContainer: LinearLayout
-                when(i){
+                when (i) {
                     0 -> {
-                        runeContainer= binding.rune1
+                        runeContainer = binding.rune1
                         imageView = binding.rune1Img
                         runeTitle = binding.runeTitle
                     }
@@ -114,10 +114,11 @@ class RuneWordsFragment : Fragment() {
                     }
                 }
                 runeContainer.visibility = View.VISIBLE
-                if(viewModel.itemsList.value?.contains(rune) == true) {
+                if (viewModel.itemsList.value?.contains(rune) == true) {
                     runeContainer.setOnClickListener {
                         viewModel.selectedItem.postValue(rune)
-                        requireActivity().findNavController(R.id.main_host).navigate(R.id.singleItemFragment)
+                        requireActivity().findNavController(R.id.main_host)
+                            .navigate(R.id.singleItemFragment)
                     }
                 }
                 runeTitle.visibility = View.VISIBLE

@@ -10,9 +10,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.activityViewModels
 import androidx.navigation.findNavController
 import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentSettingsBinding
+import com.achulkov.diablocuberessurected.ui.MainViewModel
 import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
 import com.google.android.gms.ads.AdError
 import com.google.android.gms.ads.AdRequest
@@ -38,11 +40,8 @@ class SettingsFragment : Fragment() {
     private var mRewardedAd: RewardedAd? = null
     private val TAG = "SettingsRew"
 
+    private val viewModel : MainViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -97,6 +96,7 @@ class SettingsFragment : Fragment() {
 
 
         binding.profileButton.setOnClickListener{
+            viewModel.userActionsCounter.value = viewModel.userActionsCounter.value?.plus(1)
             if(!ChatSDK.auth().isAuthenticated){
                 Snackbar.make(binding.profileButton, resources.getString(R.string.need_to_login), Snackbar.LENGTH_LONG)
                     .setAction(R.string.dismiss_snack) {
@@ -110,12 +110,14 @@ class SettingsFragment : Fragment() {
         }
 
         binding.aboutButton.setOnClickListener {
+            viewModel.userActionsCounter.value = viewModel.userActionsCounter.value?.plus(1)
             requireActivity().findNavController(R.id.main_host).navigate(R.id.aboutAppFragment)
         }
 
         binding.supportButton.setOnClickListener {
+            viewModel.userActionsCounter.value =  viewModel.userActionsCounter.value?.plus(1)
             if (mRewardedAd != null) {
-                mRewardedAd?.show(requireActivity(), OnUserEarnedRewardListener() {
+                mRewardedAd?.show(requireActivity(), OnUserEarnedRewardListener {
                     fun onUserEarnedReward(rewardItem: RewardItem) {
                         Timber.d("%sUser earned the reward.", TAG)
                     }

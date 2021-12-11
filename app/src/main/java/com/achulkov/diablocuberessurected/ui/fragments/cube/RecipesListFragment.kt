@@ -35,11 +35,6 @@ class RecipesListFragment : Fragment(), RecipeListAdapter.AdapterItemClickListen
     private lateinit var binding: FragmentRecipesListBinding
     private val viewModel : MainViewModel by activityViewModels()
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -86,6 +81,7 @@ class RecipesListFragment : Fragment(), RecipeListAdapter.AdapterItemClickListen
 
     override fun onAdapterItemClick(recipe: DCubeMappedRecipe) {
         viewModel.selectedRecipe.value = recipe
+        viewModel.userActionsCounter.value = viewModel.userActionsCounter.value?.plus(1)
         requireActivity().findNavController(R.id.main_host).navigateUp()
     }
 

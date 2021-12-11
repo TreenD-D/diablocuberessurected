@@ -65,16 +65,6 @@
         <item name="colorOnSurface">@color/orange</item>
     </style>
 
-    <style name="SplashTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <item name="android:windowBackground">@color/dark_1</item>
-    </style>
-
-    <style name="TitleStyle">
-        <item name="android:textSize">36sp</item>
-        <item name="android:textColor">@color/main_gradient</item>
-
-    </style>
-
     <style name="WelcomeTitleStyle">
         <item name="android:textSize">55sp</item>
         <item name="android:letterSpacing">0.02</item>
