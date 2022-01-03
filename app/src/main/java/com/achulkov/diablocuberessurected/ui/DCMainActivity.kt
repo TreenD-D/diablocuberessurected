@@ -81,7 +81,7 @@ class DCMainActivity : AppCompatActivity() {
         }
 
         viewModel.userActionsCounter.observe(this, {
-            if(it > 5) {
+            if(it > 25) {
                 viewModel.isReviewTriggerable.postValue(true)
                 viewModel.userActionsCounter.postValue(0)
             }

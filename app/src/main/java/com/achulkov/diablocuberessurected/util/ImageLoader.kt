@@ -2,6 +2,7 @@ package com.achulkov.diablocuberessurected.util
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.RequestBuilder
 import com.google.firebase.storage.StorageReference
@@ -19,4 +20,5 @@ interface ImageLoader {
         fun fitCenter(): RequestBuilder<Drawable>
     }
 
+    fun clear(view: View)
 }

@@ -14,8 +14,8 @@ android {
         applicationId "com.achulkov.diablocuberessurected"
         minSdk 21
         targetSdk 31
-        versionCode 5
-        versionName "1.04"
+        versionCode 6
+        versionName "1.05"
         multiDexEnabled = true
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"

@@ -21,6 +21,7 @@ import com.achulkov.diablocuberessurected.ui.MainViewModel
 import com.achulkov.diablocuberessurected.ui.fragments.cube.adapters.ItemListAdapter
 import com.achulkov.diablocuberessurected.util.ImageLoader
 import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
+import com.google.android.gms.ads.AdRequest
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import com.google.firebase.storage.FirebaseStorage
@@ -90,6 +91,9 @@ class CubeFragment : Fragment(), ItemListAdapter.AdapterItemClickListener {
                     .into(binding.itemResultImage)
             else binding.itemResultImage.setImageDrawable(ResourcesCompat.getDrawable(resources, R.drawable.convert_icon, null))
         })
+
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
 
 
     }

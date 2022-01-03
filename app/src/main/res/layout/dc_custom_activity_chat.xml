@@ -25,11 +25,13 @@
             app:layout_behavior="@string/appbar_scrolling_view_behavior"
             />
 
+
         <LinearLayout
             android:id="@+id/messageInputLinearLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
+            android:visibility="visible"
             android:layout_gravity="bottom"
             app:layout_behavior="sdk.chat.ui.appbar.TextInputBehavior"
             >
@@ -45,6 +47,7 @@
             <sdk.chat.ui.views.ReplyView
                 android:id="@+id/replyView"
                 android:layout_height="wrap_content"
+
                 android:layout_width="match_parent"
                 />
 
@@ -53,6 +56,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 app:showAttachmentButton="false"
+                android:visibility="visible"
                 app:inputTextColor="@color/gold_yellow"
                 app:inputButtonIcon="@drawable/ic_send_message"
                 app:inputButtonBackground="@color/dark_3"

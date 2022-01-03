@@ -13,6 +13,7 @@ import com.google.firebase.auth.PhoneAuthProvider
 import com.google.firebase.database.ktx.database
 import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.HiltAndroidApp
+import sdk.chat.app.firebase.ChatSDKFirebase
 import sdk.chat.core.session.ChatSDK
 import sdk.chat.firebase.adapter.module.FirebaseModule
 import sdk.chat.firebase.push.FirebasePushModule

@@ -52,6 +52,6 @@
     <string name="select_runeword_button">Select from a Runewords list</string>
     <string name="text_short_stub">short testing test</string>
     <string name="rune_stub">El</string>
-    <string name="search_runes_tooltip">name, input type…</string>
+    <string name="search_runes_tooltip">name, input type, sockets number…</string>
     <string name="used_with">Can be used with:</string>
 </resources>

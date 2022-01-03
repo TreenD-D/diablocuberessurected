@@ -2,6 +2,7 @@ package com.achulkov.diablocuberessurected.ui.chat
 
 import com.achulkov.diablocuberessurected.R
 import sdk.chat.ui.activities.ChatActivity
+import sdk.chat.ui.activities.ChatActivityWrapper
 
 class DCChatActivity : ChatActivity(){
     override fun onBackPressed() {
@@ -12,7 +13,8 @@ class DCChatActivity : ChatActivity(){
         return R.layout.dc_custom_activity_chat
     }
 
-    override fun updateOptionsButton() {
-        //empty to avoid attachment button appearing
+    override fun hideTextInput() {
+        //empty
     }
+
 }

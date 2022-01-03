@@ -2,6 +2,7 @@ package com.achulkov.diablocuberessurected.util
 
 import android.content.Context
 import android.graphics.drawable.Drawable
+import android.view.View
 import android.widget.ImageView
 import com.bumptech.glide.Glide
 import com.bumptech.glide.RequestBuilder
@@ -20,6 +21,10 @@ class GlideImageLoader @Inject constructor(
 
     override fun load(ref : StorageReference ) : RequestBuilder<Drawable>{
         return glide.load(ref)
+    }
+
+    override fun clear(view: View) {
+        glide.clear(view)
     }
 
     private inner class GlideRequestBuilder(val requestBuilder: RequestBuilder<Drawable>) : ImageLoader.ImageRequest{

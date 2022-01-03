@@ -15,6 +15,7 @@ import com.achulkov.diablocuberessurected.databinding.FragmentRuneWordsBinding
 import com.achulkov.diablocuberessurected.ui.MainViewModel
 import com.achulkov.diablocuberessurected.util.ImageLoader
 import com.achulkov.diablocuberessurected.util.TextViewGradientSetter
+import com.google.android.gms.ads.AdRequest
 import com.google.firebase.storage.FirebaseStorage
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -130,6 +131,9 @@ class RuneWordsFragment : Fragment() {
             }
 
         })
+
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
 
     }
 

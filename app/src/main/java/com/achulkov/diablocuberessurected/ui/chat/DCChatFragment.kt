@@ -11,6 +11,7 @@ import androidx.core.content.res.ResourcesCompat
 import com.achulkov.diablocuberessurected.R
 import com.achulkov.diablocuberessurected.databinding.FragmentDcChatBinding
 import com.achulkov.diablocuberessurected.ui.chat.adapter.ChatsPagerAdapter
+import com.google.android.gms.ads.AdRequest
 import com.google.android.material.tabs.TabLayoutMediator
 import sdk.chat.core.session.ChatSDK
 
@@ -58,6 +59,9 @@ class DCChatFragment : Fragment() {
             }
         }.attach()
 
+
+        val adRequest = AdRequest.Builder().build()
+        binding.adView.loadAd(adRequest)
     }
 
 
